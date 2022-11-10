@@ -17,8 +17,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController pageController = PageController();
   bool isCurrentPage = true;
   int currentPage = 0;
-  int totalPage = onboarding.length;
-  int isLastPage = ;
+  // int totalPage = onboarding.length;
+  // int isLastPage = ;
   final List<Map<String, String>> onboarding = [
     {
       "image": "assets/images/onb_img1.png",
