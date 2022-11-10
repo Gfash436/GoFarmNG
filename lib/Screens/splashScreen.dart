@@ -6,7 +6,7 @@ import 'package:gofarmng/Utilities/routers.dart';
 import '../Styles/colors.dart';
 import '../Widgets/image.dart';
 import '../Widgets/myText.dart';
-import 'onboardingScreen.dart';
+import 'onboarding_screen/onboardingScreen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,7 +18,6 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     navigate();
   }

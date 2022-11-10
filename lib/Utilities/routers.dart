@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-
 class PageNavigator {
   PageNavigator({this.ctx});
   BuildContext? ctx;
