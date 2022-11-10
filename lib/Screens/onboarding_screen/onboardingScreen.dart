@@ -2,9 +2,12 @@
 import 'package:flutter/material.dart';
 import 'package:gofarmng/Styles/colors.dart';
 
-import '../Constants/size_config.dart';
-import '../Widgets/button.dart';
-import '../Widgets/myText.dart';
+import '../../Constants/size_config.dart';
+import '../../Utilities/routers.dart';
+import '../../Widgets/button.dart';
+import '../../Widgets/myText.dart';
+import '../home_screen/home_screen.dart';
+import 'onboarding_contents.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -17,8 +20,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController pageController = PageController();
   bool isCurrentPage = true;
   int currentPage = 0;
-  // int totalPage = onboarding.length;
-  // int isLastPage = ;
+  int isLastPage = 1;
   final List<Map<String, String>> onboarding = [
     {
       "image": "assets/images/onb_img1.png",
@@ -39,6 +41,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           "We are ready to optimise the entire value chain to \nmake farm produce sustainable, more accessible and \naffordable to Africans. A place you order easily.",
     },
   ];
+
+  @override
+  void dispose() {
+    pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
@@ -73,6 +82,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   itemCount: onboarding.length,
                   onPageChanged: ((value) => setState(() {
                         currentPage = value;
+                        isLastPage = currentPage + 1;
+                        print("currentPage: ${onboarding.length}");
+                        print("isLasPage: $isLastPage");
                       })),
                   controller: pageController,
                   itemBuilder: (context, index) => onboardingContent(
@@ -86,11 +98,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 height: getProportionateScreenHeight(77),
               ),
               customButton(
-                text: isLastPage ? "Get Started" : "Next",
-                tap: () => pageController.nextPage(
-                  duration: const Duration(milliseconds: 200),
-                  curve: Curves.easeInOut,
-                ),
+                text: isLastPage == onboarding.length ? "Get Started" : "Next",
+                tap: isLastPage == onboarding.length
+                    ? () => PageNavigator(ctx: context)
+                        .nextPageOnly(page: const HomeScreen())
+                    : () => pageController.nextPage(
+                          duration: const Duration(milliseconds: 200),
+                          curve: Curves.easeInOut,
+                        ),
               ),
               SizedBox(
                 height: getProportionateScreenHeight(36),
@@ -131,47 +146,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class onboardingContent extends StatelessWidget {
-  const onboardingContent({
-    Key? key,
-    required this.desc,
-    required this.image,
-    required this.title,
-  }) : super(key: key);
-  final String image, title, desc;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: Image.asset(
-            image,
-          ),
-        ),
-        SizedBox(
-          height: getProportionateScreenHeight(36),
-        ),
-        myText(
-          text: title,
-          textAlign: TextAlign.center,
-          fontSize: 28,
-          fontWeight: FontWeight.bold,
-          color: const Color(0xff353535),
-        ),
-        SizedBox(
-          height: getProportionateScreenHeight(19),
-        ),
-        myText(
-          text: desc,
-          fontSize: 13,
-          fontWeight: FontWeight.w400,
-          color: const Color(0xff353535),
-        ),
-      ],
     );
   }
 }
