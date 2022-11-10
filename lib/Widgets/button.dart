@@ -11,7 +11,9 @@ Widget customButton(
       onTap: status == true ? null : tap,
       child: Container(
           height: 49,
-          margin: const EdgeInsets.symmetric(vertical: 15),
+          margin: const EdgeInsets.symmetric(
+            vertical: 15,
+          ),
           alignment: Alignment.center,
           decoration: BoxDecoration(
               color: status == false ? green : grey,
