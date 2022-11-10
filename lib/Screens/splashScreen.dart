@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gofarmng/Screens/Authentication/login.dart';
 import 'package:gofarmng/Utilities/routers.dart';
 
 import '../Styles/colors.dart';
@@ -22,31 +23,33 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            image('assets/images/logo.png'),
-            myText(
-                data: 'GoFarmNG',
-                fontSize: 32,
-                fontWeight: FontWeight.w800,
-                color: textColor),
-            myText(
-              data: 'Here for Your daily needs',
-              fontSize: 13,
-              fontWeight: FontWeight.w400,
-              color: textColor,
-            )
-          ],
+    return SafeArea(
+      child: Scaffold(
+        body: Center(
+          child: Column(
+            children: [
+              image('assets/images/logo.png'),
+              myText(
+                  data: 'GoFarmNG',
+                  fontSize: 32,
+                  fontWeight: FontWeight.w800,
+                  color: textColor),
+              myText(
+                data: 'Here for Your daily needs',
+                fontSize: 13,
+                fontWeight: FontWeight.w400,
+                color: textColor,
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 
   void navigate() {
-    // Future.delayed(const Duration(seconds: 3), () {
-    //   PageNavigator(ctx: context).nextPageOnly(page: const OnboardingScreen());
-    // });
+    Future.delayed(const Duration(seconds: 5), () {
+      PageNavigator(ctx: context).nextPageOnly(page: const Login());
+    });
   }
 }
