@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Styles/colors.dart';
 
-import '../Constants/size_config.dart';
 import '../Widgets/button.dart';
 import '../Widgets/myText.dart';
 
@@ -18,7 +18,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   bool isCurrentPage = true;
   int currentPage = 0;
   // int totalPage = onboarding.length;
-  // int isLastPage = ;
+  bool isLastPage = true;
   final List<Map<String, String>> onboarding = [
     {
       "image": "assets/images/onb_img1.png",
@@ -86,7 +86,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 height: getProportionateScreenHeight(77),
               ),
               customButton(
-                text: isLastPage ? "Get Started" : "Next",
+                text: isLastPage == true ? "Get Started" : "Next",
+                
                 tap: () => pageController.nextPage(
                   duration: const Duration(milliseconds: 200),
                   curve: Curves.easeInOut,

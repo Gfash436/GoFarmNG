@@ -32,27 +32,27 @@ class _LoginState extends State<Login> {
           child: Center(
             child: Column(
               children: [
-                SizedBox(height: getPrgetProportionateScreenHeight(160)),
+                SizedBox(height: getProportionateScreenHeight(160)),
                 Container(
                     child: Column(
                   children: [
                     image('assets/images/logo.png'),
-                    SizedBox(height: getPrgetProportionateScreenHeight(8)),
+                    SizedBox(height: getProportionateScreenHeight(8)),
                     myText(
-                        data: 'GoFarmNG',
+                        text: 'GoFarmNG',
                         fontSize: 32,
                         fontWeight: FontWeight.w800,
                         color: textColor),
-                    SizedBox(height: getPrgetProportionateScreenHeight(8)),
+                    SizedBox(height: getProportionateScreenHeight(8)),
                     myText(
-                      data: 'Here for Your daily needs',
+                      text: 'Here for Your daily needs',
                       fontSize: 13,
                       fontWeight: FontWeight.w400,
                       color: textColor,
                     ),
                   ],
                 )),
-                SizedBox(height: getPrgetProportionateScreenHeight(80)),
+                SizedBox(height: getProportionateScreenHeight(80)),
                 customButton2(context: context),
                 customButton(context: context, text: 'Sign Up')
               ],
