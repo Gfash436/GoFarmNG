@@ -11,12 +11,15 @@ Widget customButton(
       onTap: status == true ? null : tap,
       child: Container(
           height: 49,
-          margin: const EdgeInsets.symmetric(vertical: 8),
+          margin: const EdgeInsets.symmetric(
+            vertical: 15,
+          ),
           alignment: Alignment.center,
           decoration: BoxDecoration(
               color: status == false ? green : grey,
-              borderRadius: BorderRadius.circular(16)),
-          width: MediaQuery.of(context!).size.width,
+              borderRadius: BorderRadius.circular(8)),
+          width: double.infinity,
+
           child: Text(
             status == false ? text! : 'Please wait...',
             style: TextStyle(
