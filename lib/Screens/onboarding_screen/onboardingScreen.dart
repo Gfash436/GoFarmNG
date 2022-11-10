@@ -6,6 +6,7 @@ import '../../Constants/size_config.dart';
 import '../../Utilities/routers.dart';
 import '../../Widgets/button.dart';
 import '../../Widgets/myText.dart';
+import '../Authentication/login.dart';
 import '../home_screen/home_screen.dart';
 import 'onboarding_contents.dart';
 
@@ -99,7 +100,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 text: isLastPage == onboarding.length ? "Get Started" : "Next",
                 tap: isLastPage == onboarding.length
                     ? () => PageNavigator(ctx: context)
-                        .nextPageOnly(page: const HomeScreen())
+                        .nextPageOnly(page: const Login())
                     : () => pageController.nextPage(
                           duration: const Duration(milliseconds: 200),
                           curve: Curves.easeInOut,
