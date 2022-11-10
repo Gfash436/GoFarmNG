@@ -75,7 +75,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ],
               ),
               SizedBox(
-                height: getProportionateScreenHeight(33),
+                height: getPrgetProportionateScreenHeight(33),
               ),
               Flexible(
                 child: PageView.builder(
@@ -93,7 +93,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
               SizedBox(
-                height: getProportionateScreenHeight(77),
+                height: getPrgetProportionateScreenHeight(77),
               ),
               customButton(
                 text: isLastPage == onboarding.length ? "Get Started" : "Next",
@@ -106,7 +106,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
               ),
               SizedBox(
-                height: getProportionateScreenHeight(36),
+                height: getPrgetProportionateScreenHeight(36),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -138,7 +138,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ],
               ),
               SizedBox(
-                height: getProportionateScreenHeight(40),
+                height: getPrgetProportionateScreenHeight(40),
               ),
             ],
           ),

@@ -13,6 +13,7 @@ class onboardingContent extends StatelessWidget {
   final String image, title, desc;
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(context);
     return Column(
       children: [
         Expanded(
@@ -21,7 +22,7 @@ class onboardingContent extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: getProportionateScreenHeight(36),
+          height: getPrgetProportionateScreenHeight(36),
         ),
         myText(
           text: title,
@@ -31,7 +32,7 @@ class onboardingContent extends StatelessWidget {
           color: const Color(0xff353535),
         ),
         SizedBox(
-          height: getProportionateScreenHeight(19),
+          height: getPrgetProportionateScreenHeight(19),
         ),
         myText(
           text: desc,

@@ -39,13 +39,13 @@ class _LoginState extends State<Login> {
                     image('assets/images/logo.png'),
                     SizedBox(height: getPrgetProportionateScreenHeight(8)),
                     myText(
-                        data: 'GoFarmNG',
+                        text: 'GoFarmNG',
                         fontSize: 32,
                         fontWeight: FontWeight.w800,
                         color: textColor),
                     SizedBox(height: getPrgetProportionateScreenHeight(8)),
                     myText(
-                      data: 'Here for Your daily needs',
+                      text: 'Here for Your daily needs',
                       fontSize: 13,
                       fontWeight: FontWeight.w400,
                       color: textColor,
