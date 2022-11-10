@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gofarmng/Constants/size_config.dart';
+import 'package:gofarmng/Screens/Authentication/login.dart';
 import 'package:gofarmng/Utilities/routers.dart';
 
 import '../Styles/colors.dart';
@@ -44,6 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
               color: textColor,
             )
           ],
+   
         ),
       ),
     );
@@ -52,6 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void navigate() {
     Future.delayed(const Duration(seconds: 3), () {
       PageNavigator(ctx: context).nextPageOnly(page: const OnboardingScreen());
+    
     });
   }
 }
