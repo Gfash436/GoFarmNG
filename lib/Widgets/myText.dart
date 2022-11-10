@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 //project imports
 
 class myText extends StatelessWidget {
-  final String data;
+  final String text;
   final double? fontSize;
   final FontWeight? fontWeight;
   final Color? color;
@@ -11,7 +11,7 @@ class myText extends StatelessWidget {
 
   const myText(
       {super.key,
-      required this.data,
+      required this.text,
       this.fontSize,
       this.fontWeight,
       this.color,
@@ -20,7 +20,7 @@ class myText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      data,
+      text,
       textAlign: textAlign,
       style: TextStyle(
         color: color,
