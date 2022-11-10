@@ -83,8 +83,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   onPageChanged: ((value) => setState(() {
                         currentPage = value;
                         isLastPage = currentPage + 1;
-                        print("currentPage: ${onboarding.length}");
-                        print("isLasPage: $isLastPage");
                       })),
                   controller: pageController,
                   itemBuilder: (context, index) => onboardingContent(
