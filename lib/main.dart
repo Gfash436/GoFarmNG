@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gofarmng/Screens/home_screen/home_screen.dart';
 import 'package:gofarmng/Screens/splashScreen.dart';
 
 void main() {

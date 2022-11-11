@@ -7,7 +7,6 @@ import '../../Utilities/routers.dart';
 import '../../Widgets/button.dart';
 import '../../Widgets/myText.dart';
 import '../Authentication/login.dart';
-import '../home_screen/home_screen.dart';
 import 'onboarding_contents.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -76,9 +75,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ],
               ),
               SizedBox(
-                height: getPrgetProportionateScreenHeight(33),
+                height: getProportionateScreenHeight(33),
               ),
-              Flexible(
+              Expanded(
                 child: PageView.builder(
                   itemCount: onboarding.length,
                   onPageChanged: ((value) => setState(() {
@@ -94,7 +93,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
               SizedBox(
-                height: getPrgetProportionateScreenHeight(77),
+                height: getProportionateScreenHeight(77),
               ),
               customButton(
                 text: isLastPage == onboarding.length ? "Get Started" : "Next",
@@ -107,7 +106,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
               ),
               SizedBox(
-                height: getPrgetProportionateScreenHeight(36),
+                height: getProportionateScreenHeight(36),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -124,7 +123,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         margin: const EdgeInsets.symmetric(
                           horizontal: 16,
                         ),
-                        width: currentPage == index ? 32 : 8,
+                        width: currentPage == index ? getProportionateScreenWidth(32) : 8,
                         height: 8,
                         decoration: BoxDecoration(
                           color: currentPage == index ? green : lightGrey,
@@ -139,7 +138,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ],
               ),
               SizedBox(
-                height: getPrgetProportionateScreenHeight(40),
+                height: getProportionateScreenHeight(40),
               ),
             ],
           ),

@@ -22,21 +22,21 @@ class onboardingContent extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: getPrgetProportionateScreenHeight(36),
+          height: getProportionateScreenWidth(36),
         ),
         myText(
           text: title,
           textAlign: TextAlign.center,
-          fontSize: 28,
+          fontSize: getProportionateScreenHeight(28),
           fontWeight: FontWeight.bold,
           color: const Color(0xff353535),
         ),
         SizedBox(
-          height: getPrgetProportionateScreenHeight(19),
+          height: getProportionateScreenWidth(19),
         ),
         myText(
           text: desc,
-          fontSize: 13,
+          fontSize: getProportionateScreenHeight(13),
           fontWeight: FontWeight.w400,
           color: const Color(0xff353535),
         ),
