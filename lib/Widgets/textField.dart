@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Styles/colors.dart';
 
 Widget customTextField(
-    {String? title,
+    {
+      String? title,
     String? hint,
     TextEditingController? controller,
     int? maxlines = 1}) {
@@ -19,8 +21,11 @@ Widget customTextField(
         ),
       ),
       Container(
-        margin: const EdgeInsets.symmetric(vertical: 10),
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        margin:
+            EdgeInsets.symmetric(vertical: getProportionateScreenHeight(10)),
+        padding: EdgeInsets.symmetric(
+            vertical: getProportionateScreenHeight(5),
+            horizontal: getProportionateScreenWidth(10)),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8), color: lightGrey),
         child: TextFormField(
