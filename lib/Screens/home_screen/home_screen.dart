@@ -22,7 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.brown,
+      // backgroundColor: Colors.white,
       appBar: appBar(),
       body: SingleChildScrollView(
         child: Padding(
