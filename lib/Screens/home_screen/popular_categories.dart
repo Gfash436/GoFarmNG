@@ -55,19 +55,17 @@ class PopularCategories extends StatelessWidget {
                         height: getProportionateScreenHeight(48),
                         width: getProportionateScreenHeight(48),
                         decoration: BoxDecoration(
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
-                              color: const Color(0xff111111).withOpacity(.25),
-                              offset: const Offset(0, 1),
+                              color:  Color(0x40111111),
+                              offset: Offset(0, 1),
                               blurRadius: 4,
                               spreadRadius: 0,
                             ),
                           ],
                           borderRadius: BorderRadius.circular(8),
-                          image: const DecorationImage(
-                            image: AssetImage("assets/images/orange.png"),
-                          ),
                         ),
+                        child: Image.asset("assets/images/orange.png"),
                       ),
                       SizedBox(
                         height: getProportionateScreenHeight(8),

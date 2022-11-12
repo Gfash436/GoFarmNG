@@ -28,15 +28,7 @@ class NewestArrival extends StatelessWidget {
         ),
         Container(
            color: Colors.white,
-          margin: EdgeInsets.only(
-            top: getProportionateScreenHeight(
-              8,
-            ),
-            bottom: getProportionateScreenHeight(
-              8,
-            ),
-          ),
-          height: getProportionateScreenWidth(
+            height: getProportionateScreenWidth(
             190.57,
           ),
           child: ListView.separated(

@@ -24,16 +24,11 @@ class TopSellingProducts extends StatelessWidget {
             ),
           ],
         ),
+        SizedBox(
+          height: getProportionateScreenHeight(8),
+        ),
         Container(
           color: Colors.white,
-          margin: EdgeInsets.only(
-            top: getProportionateScreenHeight(
-              8,
-            ),
-            // bottom: getProportionateScreenHeight(
-            //   8,
-            // ),
-          ),
           height: getProportionateScreenWidth(
             190.57,
           ),
@@ -44,9 +39,6 @@ class TopSellingProducts extends StatelessWidget {
               width: getProportionateScreenWidth(10),
             ),
             itemBuilder: (BuildContext context, int index) => Container(
-              // margin: EdgeInsets.only(
-              //   left: getProportionateScreenWidth(16),
-              // ),
               padding: EdgeInsets.all(
                 getProportionateScreenWidth(16),
               ),
