@@ -1,32 +1,27 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../Constants/size_config.dart';
 import '../../Styles/colors.dart';
 
+class NavBar extends StatelessWidget {
+  const NavBar({
+    Key? key,
+    required this.navigatoTo, required this.selectedIndex,
+  }) : super(key: key);
+  final Function(int index) navigatoTo;
+  final int selectedIndex;
 
-class bottomNavBar extends StatefulWidget {
-  const bottomNavBar({
-    super.key,
-  });
-
-  @override
-  State<bottomNavBar> createState() => _bottomNavBarState();
-}
-
-class _bottomNavBarState extends State<bottomNavBar> {
-  int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       type: BottomNavigationBarType.fixed,
-      currentIndex: _selectedIndex,
+      currentIndex: selectedIndex,
       selectedItemColor: green,
       unselectedItemColor: grey,
       showUnselectedLabels: true,
-      onTap: (value) => setState(() {
-        _selectedIndex = value;
-      }),
+      onTap: navigatoTo,
       selectedLabelStyle: TextStyle(
         fontSize: getProportionateScreenWidth(10),
         fontWeight: FontWeight.bold,

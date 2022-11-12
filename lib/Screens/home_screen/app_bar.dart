@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../Constants/size_config.dart';
 
-AppBar appBar() {
+AppBar appBar(BuildContext context,final scafoldKey) {
   return AppBar(
     backgroundColor: Colors.white,
     elevation: 0,
@@ -11,7 +11,7 @@ AppBar appBar() {
       icon: SvgPicture.asset(
         "assets/icons/menu.svg",
       ),
-      onPressed: () {},
+      onPressed: () => scafoldKey.currentState!.openDrawer(),
     ),
     actions: [
       SvgPicture.asset(

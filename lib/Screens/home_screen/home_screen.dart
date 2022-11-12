@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gofarmng/Constants/size_config.dart';
+import 'package:gofarmng/Screens/analytics_screen/analytics_screen.dart';
+import 'package:gofarmng/Screens/favorite_screen/favorite_screen.dart';
+import 'package:gofarmng/Screens/wallet_screen/wallet_screen.dart';
 import 'package:gofarmng/Widgets/myText.dart';
 
 import '../../Widgets/search_textformfield.dart';
 import 'app_bar.dart';
+import 'app_drawer.dart';
 import 'bottom_navBar.dart';
+import 'home_screen_body.dart';
 import 'newest_arrival.dart';
 import 'popular_categories.dart';
 import 'top_selling_products.dart';
@@ -17,52 +22,33 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final TextEditingController searchController = TextEditingController();
+  // final TextEditingController searchController = TextEditingController();
+  int _selectedIndex = 0;
+  final scafoldKey = GlobalKey<ScaffoldState>();
+  static final List<Widget> _pages = [
+    const HomeScreenBody(),
+    const AnalyticsScreen(),
+    const FavoriteScreen(),
+    const WalletScreen(),
+  ];
+  void navigatoTo(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
+      key: scafoldKey,
       // backgroundColor: Colors.brown,
       // backgroundColor: Colors.white,
-      appBar: appBar(),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(
-            left: getProportionateScreenWidth(20),
-            right: getProportionateScreenWidth(20),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              myText(
-                text: "Hey David!",
-                fontSize: getProportionateScreenHeight(29),
-                fontWeight: FontWeight.w700,
-              ),
-              SizedBox(
-                height: getProportionateScreenHeight(11),
-              ),
-              const SearchTextFormField(),
-              SizedBox(
-                height: getProportionateScreenHeight(28),
-              ),
-              const PopularCategories(),
-              SizedBox(
-                height: getProportionateScreenHeight(16),
-              ),
-              const TopSellingProducts(),
-              SizedBox(
-                height: getProportionateScreenHeight(16),
-              ),
-              const NewestArrival(),
-              SizedBox(
-                height: getProportionateScreenHeight(32),
-              ),
-            ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: const bottomNavBar(),
+      appBar: appBar(context,scafoldKey),
+      drawer: const AppDrawer(),
+      body: _pages[_selectedIndex],
+      bottomNavigationBar:
+          NavBar(navigatoTo: navigatoTo, selectedIndex: _selectedIndex),
     );
   }
 }
