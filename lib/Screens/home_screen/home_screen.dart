@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
       // backgroundColor: Colors.brown,
       // backgroundColor: Colors.white,
       appBar: appBar(context,scafoldKey),
-      drawer: const AppDrawer(),
+      drawer:  AppDrawer(),
       body: _pages[_selectedIndex],
       bottomNavigationBar:
           NavBar(navigatoTo: navigatoTo, selectedIndex: _selectedIndex),
