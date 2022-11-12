@@ -86,19 +86,30 @@ class AppDrawer extends StatelessWidget {
                     32,
                   ),
                 ),
-                SizedBox(
-                  height: getProportionateScreenHeight(360),
+                Expanded(
+                  // height: getProportionateScreenHeight(360),
                   child: ListView.separated(
                     itemCount: drawerList.length,
                     separatorBuilder: (context, index) => Divider(
                       thickness: .5,
-                      height: getProportionateScreenWidth(215),
+                      height: getProportionateScreenWidth(16),
                     ),
                     itemBuilder: (context, index) => Row(
                       children: [
-                        SvgPicture.asset("${drawerList[index]["icon"]}"),
-                        SizedBox(width: getProportionateScreenWidth(16,),),
-                        myText(text: "${drawerList[index]["title"]}",)
+                        SvgPicture.asset(
+                          "${drawerList[index]["icon"]}",
+                          height: getProportionateScreenWidth(21),
+                          width: getProportionateScreenWidth(21),
+                        ),
+                        SizedBox(
+                          width: getProportionateScreenWidth(
+                            16,
+                          ),
+                        ),
+                        myText(
+                          text: "${drawerList[index]["title"]}",
+                          fontSize: getProportionateScreenWidth(14),
+                        )
                       ],
                     ),
                   ),
