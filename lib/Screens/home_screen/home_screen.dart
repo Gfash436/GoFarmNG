@@ -24,11 +24,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   // final TextEditingController searchController = TextEditingController();
   int _selectedIndex = 0;
-  final scafoldKey = GlobalKey<ScaffoldState>();
+  // final scafoldKey = GlobalKey<ScaffoldState>();
   static final List<Widget> _pages = [
-    const HomeScreenBody(),
-    const AnalyticsScreen(),
-    const FavoriteScreen(),
+    HomeScreenBody(),
+    AnalyticsScreen(),
+    FavoriteScreen(),
     const WalletScreen(),
   ];
   void navigatoTo(int index) {
@@ -41,12 +41,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
-      key: scafoldKey,
+      // key: scafoldKey,
       // backgroundColor: Colors.brown,
       // backgroundColor: Colors.white,
-      appBar: appBar(context,scafoldKey),
-      drawer:  AppDrawer(),
-      body: _pages[_selectedIndex],
+      // drawer: AppDrawer(),
+      body: SafeArea(child: _pages[_selectedIndex]),
       bottomNavigationBar:
           NavBar(navigatoTo: navigatoTo, selectedIndex: _selectedIndex),
     );
