@@ -1,10 +1,159 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:gofarmng/Constants/size_config.dart';
+import 'package:gofarmng/Styles/colors.dart';
+import 'package:gofarmng/Widgets/myText.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: myText(
+          text: "Wallet",
+          fontSize: getProportionateScreenWidth(
+            16,
+          ),
+          fontWeight: FontWeight.w700,
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        elevation: 0,
+        foregroundColor: Colors.black,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: Column(
+          children: [
+            Container(
+              width: getProportionateScreenWidth(double.infinity),
+              height: getProportionateScreenHeight(136),
+              decoration: BoxDecoration(
+                color: green,
+                borderRadius: BorderRadius.circular(
+                  8,
+                ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  myText(
+                    text: "Total balance",
+                    color: white,
+                    fontSize: getProportionateScreenHeight(
+                      16,
+                    ),
+                    fontWeight: FontWeight.w700,
+                  ),
+                  SizedBox(
+                    height: getProportionateScreenHeight(4),
+                  ),
+                  myText(
+                    text: "N49,650.23",
+                    color: white,
+                    fontSize: getProportionateScreenHeight(
+                      40,
+                    ),
+                    fontWeight: FontWeight.w700,
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: getProportionateScreenHeight(24),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(
+                        4,
+                      ),
+                      height: 24,
+                      width: 24,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: green,
+                      ),
+                      child: SvgPicture.asset(
+                        "assets/icons/arrow-down.svg",
+                      ),
+                    ),
+                    SizedBox(
+                      height: getProportionateScreenHeight(8),
+                    ),
+                    myText(
+                      text: "Deposit",
+                      fontSize: getProportionateScreenWidth(
+                        13,
+                      ),
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  width: getProportionateScreenWidth(40),
+                ),
+                Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(
+                        4,
+                      ),
+                      height: 24,
+                      width: 24,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: red,
+                      ),
+                      child: SvgPicture.asset(
+                        "assets/icons/arrow-up.svg",
+                      ),
+                    ),
+                    SizedBox(
+                      height: getProportionateScreenHeight(8),
+                    ),
+                    myText(
+                      text: "Withdraw",
+                      fontSize: getProportionateScreenWidth(
+                        13,
+                      ),
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(
+                      height: getProportionateScreenHeight(24),
+                    ),
+                    myText(
+                      text: "Withdraw",
+                      fontSize: getProportionateScreenWidth(
+                        13,
+                      ),
+                      fontWeight: FontWeight.w400,
+                    ),
+                     SizedBox(
+                      height: getProportionateScreenHeight(16),
+                    ),
+                    myText(
+                      text: "Withdraw",
+                      fontSize: getProportionateScreenWidth(
+                        13,
+                      ),
+                      fontWeight: FontWeight.w400,
+                    ),
+                    SizedBox(
+                      height: getProportionateScreenHeight(8),
+                    ),
+          ],
+        ),
+      ),
+    );
   }
 }

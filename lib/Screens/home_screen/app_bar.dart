@@ -7,6 +7,7 @@ AppBar appBar(BuildContext context,final scafoldKey) {
   return AppBar(
     backgroundColor: Colors.white,
     elevation: 0,
+    
     leading: IconButton(
       icon: SvgPicture.asset(
         "assets/icons/menu.svg",
