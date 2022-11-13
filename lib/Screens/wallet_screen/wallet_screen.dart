@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gofarmng/Constants/size_config.dart';
+import 'package:gofarmng/Screens/wallet_screen/cart_purchased.dart';
 import 'package:gofarmng/Styles/colors.dart';
 import 'package:gofarmng/Widgets/myText.dart';
+
+import 'fund_transactions.dart';
 
 class WalletScreen extends StatelessWidget {
   const WalletScreen({super.key});
@@ -26,6 +29,7 @@ class WalletScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               width: getProportionateScreenWidth(double.infinity),
@@ -129,28 +133,55 @@ class WalletScreen extends StatelessWidget {
               ],
             ),
             SizedBox(
-                      height: getProportionateScreenHeight(24),
-                    ),
+              height: getProportionateScreenHeight(24),
+            ),
+            myText(
+              text: "Recent Transactions",
+              fontSize: getProportionateScreenWidth(
+                19,
+              ),
+              fontWeight: FontWeight.w600,
+            ),
+            SizedBox(
+              height: getProportionateScreenHeight(16),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     myText(
-                      text: "Withdraw",
+                      text: "4th Nov, 2022",
                       fontSize: getProportionateScreenWidth(
-                        13,
+                        12,
                       ),
-                      fontWeight: FontWeight.w400,
+                      fontWeight: FontWeight.normal,
                     ),
-                     SizedBox(
-                      height: getProportionateScreenHeight(16),
+                    const RecentTransactionComponents(
+                      isDeposit: false,
                     ),
-                    myText(
-                      text: "Withdraw",
-                      fontSize: getProportionateScreenWidth(
-                        13,
-                      ),
-                      fontWeight: FontWeight.w400,
+                    const RecentTransactionComponents(
+                      isDeposit: true,
+                    ),
+                    const RecentTransactionComponents(
+                      isDeposit: true,
                     ),
                     SizedBox(
                       height: getProportionateScreenHeight(8),
                     ),
+                    myText(
+                      text: "2nd Nov, 2022",
+                      fontSize: getProportionateScreenWidth(
+                        12,
+                      ),
+                      fontWeight: FontWeight.normal,
+                    ),
+                    const CartTransactionDetails(),
+                    const CartTransactionDetails(),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
