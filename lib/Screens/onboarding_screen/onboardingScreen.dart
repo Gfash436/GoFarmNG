@@ -1,19 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Styles/colors.dart';
 
-<<<<<<< HEAD:lib/Screens/onboardingScreen.dart
-import '../Widgets/button.dart';
-import '../Widgets/myText.dart';
-=======
 import '../../Constants/size_config.dart';
 import '../../Utilities/routers.dart';
 import '../../Widgets/button.dart';
 import '../../Widgets/myText.dart';
 import '../Authentication/login.dart';
 import 'onboarding_contents.dart';
->>>>>>> GoFarmNG/Bayo:lib/Screens/onboarding_screen/onboardingScreen.dart
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -26,12 +20,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   final PageController pageController = PageController();
   bool isCurrentPage = true;
   int currentPage = 0;
-<<<<<<< HEAD:lib/Screens/onboardingScreen.dart
-  // int totalPage = onboarding.length;
-  bool isLastPage = true;
-=======
   int isLastPage = 1;
->>>>>>> GoFarmNG/Bayo:lib/Screens/onboarding_screen/onboardingScreen.dart
   final List<Map<String, String>> onboarding = [
     {
       "image": "assets/images/onb_img1.png",
@@ -107,14 +96,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 height: getProportionateScreenHeight(77),
               ),
               customButton(
-<<<<<<< HEAD:lib/Screens/onboardingScreen.dart
-                text: isLastPage == true ? "Get Started" : "Next",
-                
-                tap: () => pageController.nextPage(
-                  duration: const Duration(milliseconds: 200),
-                  curve: Curves.easeInOut,
-                ),
-=======
                 text: isLastPage == onboarding.length ? "Get Started" : "Next",
                 tap: isLastPage == onboarding.length
                     ? () => PageNavigator(ctx: context)
@@ -123,7 +104,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           duration: const Duration(milliseconds: 200),
                           curve: Curves.easeInOut,
                         ),
->>>>>>> GoFarmNG/Bayo:lib/Screens/onboarding_screen/onboardingScreen.dart
               ),
               SizedBox(
                 height: getProportionateScreenHeight(36),

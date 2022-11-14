@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gofarmng/Constants/size_config.dart';
+import 'package:gofarmng/Screens/Authentication/loginPage.dart';
 
 import '../../Styles/colors.dart';
+import '../../Utilities/routers.dart';
 import '../../Widgets/button.dart';
 import '../../Widgets/image.dart';
 import '../../Widgets/myText.dart';
@@ -52,7 +54,7 @@ class _LoginState extends State<Login> {
                   ],
                 )),
                 SizedBox(height: getProportionateScreenHeight(80)),
-                customButton2(context: context),
+                customButton2(context: context, tap: navigate),
                 customButton(context: context, text: 'Sign Up')
               ],
             ),
@@ -63,8 +65,8 @@ class _LoginState extends State<Login> {
   }
 
   void navigate() {
-    // Future.delayed(const Duration(seconds: 3), () {
-    //   PageNavigator(ctx: context).nextPageOnly(page: const OnboardingScreen());
-    // });
+    Future.delayed(const Duration(seconds: 3), () {
+      PageNavigator(ctx: context).nextPageOnly(page: const LoginPage());
+    });
   }
 }
