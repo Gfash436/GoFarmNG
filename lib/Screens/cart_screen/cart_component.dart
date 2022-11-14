@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../Constants/size_config.dart';
 import '../../Styles/colors.dart';
+import '../../Widgets/addItemIcon_&_removeItemIcon.dart';
 import '../../Widgets/myText.dart';
-import 'containerBtn.dart';
-import 'removeItemBtn.dart';
+import '../favorite_screen/removeItemBtn.dart';
 
-class FavComponents extends StatelessWidget {
-  const FavComponents({
+class CartComponents extends StatelessWidget {
+  const CartComponents({
     super.key,
     // required this.icon,
   });
@@ -72,6 +70,7 @@ class FavComponents extends StatelessWidget {
                       ),
                       fontWeight: FontWeight.bold,
                     ),
+                    const Spacer(),
                     Text.rich(
                       TextSpan(
                           text: "N1000",
@@ -103,9 +102,30 @@ class FavComponents extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ContainerButton(
-                ontap: () {},
-                text: "Buy now",
+              SizedBox(
+                height: getProportionateScreenWidth(24),
+                width: getProportionateScreenWidth(74),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ContainerRemoveItemIcon(
+                      ontap: () {},
+                    ),
+                    Expanded(
+                      child: myText(
+                        text: "1",textAlign: TextAlign.center,
+                        fontSize: getProportionateScreenWidth(
+                          16,
+                        ),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    ContainerAddItemIcon(
+                      ontap: () {},
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
                 height: getProportionateScreenHeight(
@@ -118,6 +138,46 @@ class FavComponents extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ContainerButton extends StatelessWidget {
+  const ContainerButton({
+    super.key,
+    required this.ontap,
+    required this.text,
+    this.btnColor,
+    this.ktextColor,
+  });
+  final VoidCallback ontap;
+  final String text;
+  final Color? btnColor;
+  final Color? ktextColor;
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: ontap,
+      child: SizedBox(
+        height: getProportionateScreenWidth(30),
+        width: getProportionateScreenWidth(80),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            color: btnColor ?? green,
+          ),
+          child: Center(
+            child: myText(
+              text: text,
+              color: ktextColor ?? white,
+              fontSize: getProportionateScreenWidth(
+                12,
+              ),
+              fontWeight: FontWeight.normal,
+            ),
+          ),
+        ),
       ),
     );
   }

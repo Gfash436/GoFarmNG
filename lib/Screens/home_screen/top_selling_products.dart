@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../Constants/size_config.dart';
 import '../../Styles/colors.dart';
+import '../../Widgets/addItemIcon_&_removeItemIcon.dart';
 import '../../Widgets/myText.dart';
 
 class TopSellingProducts extends StatelessWidget {
@@ -85,15 +86,6 @@ class TopSellingProducts extends StatelessWidget {
                       ],
                     ),
                   ),
-                  // Positioned(
-                  //   bottom: getProportionateScreenHeight(96),
-                  //   // width: getProportionateScreenWidth(140),
-                  //   left: getProportionateScreenHeight(20),
-                  //   right: getProportionateScreenHeight(20),
-                  //   child: Image.asset(
-                  //     "assets/images/banana.png",
-                  //   ),
-                  // ),
                   Align(
                     alignment: Alignment.topCenter,
                     child: Image.asset(
@@ -141,11 +133,6 @@ class TopSellingProducts extends StatelessWidget {
                       ],
                     ),
                   ),
-                  // SizedBox(
-                  //   height: getProportionateScreenHeight(
-                  //     8,
-                  //   ),
-                  // ),
                   Positioned(
                     bottom: 0,
                     width: getProportionateScreenWidth(108),
@@ -174,17 +161,8 @@ class TopSellingProducts extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Container(
-                          width: 24,
-                          height: 24,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(4),
-                            color: const Color(0xffE5F7E1),
-                          ),
-                          child: const Icon(
-                            Icons.add,
-                            color: Color(0xff353535),
-                          ),
+                        ContainerAddItemIcon(
+                          ontap: () {},
                         ),
                       ],
                     ),

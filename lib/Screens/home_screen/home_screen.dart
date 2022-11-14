@@ -3,16 +3,9 @@ import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Screens/analytics_screen/analytics_screen.dart';
 import 'package:gofarmng/Screens/favorite_screen/favorite_screen.dart';
 import 'package:gofarmng/Screens/wallet_screen/wallet_screen.dart';
-import 'package:gofarmng/Widgets/myText.dart';
 
-import '../../Widgets/search_textformfield.dart';
-import 'app_bar.dart';
-import 'app_drawer.dart';
 import 'bottom_navBar.dart';
 import 'home_screen_body.dart';
-import 'newest_arrival.dart';
-import 'popular_categories.dart';
-import 'top_selling_products.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

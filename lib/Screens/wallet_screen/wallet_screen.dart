@@ -73,18 +73,21 @@ class WalletScreen extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Container(
-                      padding: const EdgeInsets.all(
-                        4,
-                      ),
-                      height: 24,
-                      width: 24,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: green,
-                      ),
-                      child: SvgPicture.asset(
-                        "assets/icons/arrow-down.svg",
+                    InkWell(
+                      onTap: (){},
+                      child: Container(
+                        padding: const EdgeInsets.all(
+                          4,
+                        ),
+                        height: 24,
+                        width: 24,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: green,
+                        ),
+                        child: SvgPicture.asset(
+                          "assets/icons/arrow-down.svg",
+                        ),
                       ),
                     ),
                     SizedBox(

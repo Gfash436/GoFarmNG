@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../Constants/size_config.dart';
+import '../cart_screen/cart_screen.dart';
 
-AppBar appBar(BuildContext context,final scafoldKey) {
+AppBar appBar(BuildContext context, final scafoldKey) {
   return AppBar(
     backgroundColor: Colors.white,
     elevation: 0,
-    
     leading: IconButton(
       icon: SvgPicture.asset(
         "assets/icons/menu.svg",
@@ -15,17 +15,23 @@ AppBar appBar(BuildContext context,final scafoldKey) {
       onPressed: () => scafoldKey.currentState!.openDrawer(),
     ),
     actions: [
-      SvgPicture.asset(
-        "assets/icons/notification.svg",
+      IconButton(
+        icon: SvgPicture.asset(
+          "assets/icons/notification.svg",
+        ),
+        onPressed: () {},
       ),
-      SizedBox(
-        width: getProportionateScreenWidth(20),
-      ),
-      SvgPicture.asset(
-        "assets/icons/cart.svg",
-      ),
-      SizedBox(
-        width: getProportionateScreenWidth(20),
+      IconButton(
+        icon: SvgPicture.asset(
+          "assets/icons/cart.svg",
+        ),
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const CartScreen(),
+            ),
+          );
+        },
       ),
     ],
   );
