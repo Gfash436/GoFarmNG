@@ -60,18 +60,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  TextButton(
-                    onPressed: () =>
-                        pageController.animateToPage(onboarding.length,
-                            duration: const Duration(
-                              seconds: 1,
-                            ),
-                            curve: Curves.linear),
-                    child: const myText(
-                      text: "Skip",
-                      color: Colors.black,
-                    ),
-                  ),
+                  isLastPage == onboarding.length
+                      ? SizedBox(
+                          height: getProportionateScreenHeight(16),
+                        )
+                      : TextButton(
+                          onPressed: () =>
+                              pageController.animateToPage(onboarding.length,
+                                  duration: const Duration(
+                                    seconds: 1,
+                                  ),
+                                  curve: Curves.linear),
+                          child: const myText(
+                            text: "Skip",
+                            color: Colors.black,
+                          ),
+                        ),
                 ],
               ),
               SizedBox(
@@ -123,7 +127,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         margin: const EdgeInsets.symmetric(
                           horizontal: 16,
                         ),
-                        width: currentPage == index ? getProportionateScreenWidth(32) : 8,
+                        width: currentPage == index
+                            ? getProportionateScreenWidth(32)
+                            : 8,
                         height: 8,
                         decoration: BoxDecoration(
                           color: currentPage == index ? green : lightGrey,
