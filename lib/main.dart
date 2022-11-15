@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gofarmng/Screens/splashScreen.dart';
+
+import 'Screens/splashScreen.dart';
 
 void main() {
   runApp(const MyApp());
