@@ -18,3 +18,10 @@ class PageNavigator {
         ctx!, MaterialPageRoute(builder: (context) => page!), (route) => false);
   }
 }
+
+
+  // void navigate() {
+  //   Future.delayed(const Duration(seconds: 3), () {
+  //     PageNavigator(ctx: context).nextPageOnly(page: LoginPage());
+  //   });
+  // }
