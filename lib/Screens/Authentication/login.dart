@@ -66,7 +66,7 @@ class _LoginState extends State<Login> {
 
   void navigate() {
     Future.delayed(const Duration(seconds: 3), () {
-      PageNavigator(ctx: context).nextPageOnly(page: const LoginPage());
+      PageNavigator(ctx: context).nextPageOnly(page: LoginPage());
     });
   }
 }
