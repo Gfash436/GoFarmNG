@@ -1,22 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gofarmng/Constants/size_config.dart';
-import 'package:gofarmng/Screens/Authentication/forgotPassword.dart';
-import 'package:gofarmng/Screens/home_screen/home_screen.dart';
+import 'package:gofarmng/Screens/Authentication/loginPage.dart';
+import 'package:gofarmng/Screens/Authentication/verification.dart';
 import 'package:gofarmng/Widgets/textField.dart';
 
 import '../../Constants/controllers.dart';
 import '../../Styles/colors.dart';
 import '../../Widgets/button.dart';
 import '../../Widgets/myText.dart';
-import 'signUpPage.dart';
 
-class LoginPage extends StatefulWidget {
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
+
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpPageState extends State<SignUpPage> {
   bool _checked = false;
 
   @override
@@ -28,24 +29,35 @@ class _LoginPageState extends State<LoginPage> {
             body: SingleChildScrollView(
               child: Center(
                   child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
+                      padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
                       child: Column(children: [
                         myText(
-                            text: 'Sign Up',
+                            text: 'Create an Account',
                             color: textColor,
                             fontSize: 24,
                             fontWeight: FontWeight.w700),
                         const SizedBox(height: 32),
                         customTextField(
+                            title: 'Full name',
+                            hint: 'Enter full name',
+                            controller: fullNameController,
+                            keyboardType: TextInputType.name),
+                        const SizedBox(height: 8),
+                        customTextField(
                             title: 'Email Address',
                             hint: 'example@gmail.com',
                             controller: emailController,
                             keyboardType: TextInputType.emailAddress),
-                        const SizedBox(height: 16),
+                        const SizedBox(height: 8),
                         passwordTextField(
                             title: 'Password',
                             hint: 'enter password',
                             controller: passwordController),
+                        const SizedBox(height: 8),
+                        passwordTextField(
+                            title: 'Confirm Password',
+                            hint: 'enter password',
+                            controller: confirmPasswordController),
                         Row(children: [
                           Checkbox(
                             value: _checked,
@@ -57,46 +69,27 @@ class _LoginPageState extends State<LoginPage> {
                               });
                             },
                           ),
-                          SizedBox(
-                            width: getProportionateScreenWidth(280),
-                            child: Row(
-                              children: [
-                                myText(
-                                    text: 'Remember me',
-                                    color: grey,
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w400),
-                                const Spacer(),
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        CupertinoPageRoute(
-                                            builder: (context) =>
-                                                const ForgotPassword()));
-                                  },
-                                  child: myText(
-                                      text: 'Forgot Password',
-                                      color: green,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400),
-                                ),
-                              ],
-                            ),
+                          Expanded(
+                            child: myText(
+                                text:
+                                    'I agree to GoFarmNG terms of service and private\n policy',
+                                color: grey,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500),
                           )
                         ]),
-                        const SizedBox(height: 24),
+                        const SizedBox(height: 8),
                         customButton(
                             context: context,
-                            text: 'Sign In',
+                            text: 'Sign Up',
                             tap: (() {
-                              Navigator.push(
+                              Navigator.pushReplacement(
                                   context,
                                   CupertinoPageRoute(
                                       builder: (context) =>
-                                          const HomeScreen()));
+                                          const Verification()));
                             })),
-                        const SizedBox(height: 24),
+                        const SizedBox(height: 8),
                         SizedBox(
                           width: getProportionateScreenWidth(300),
                           child: Row(
@@ -122,26 +115,25 @@ class _LoginPageState extends State<LoginPage> {
                             ],
                           ),
                         ),
-                        const SizedBox(height: 24),
-                        googleButton(context: context),
                         const SizedBox(height: 16),
+                        googleButton(context: context),
+                        const SizedBox(height: 8),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const myText(
-                              text: "Don't have an account? ",
-                              fontSize: 13,
-                              fontWeight: FontWeight.w400,
-                            ),
+                                text: "Already have an account? ",
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                     context,
                                     CupertinoPageRoute(
-                                        builder: (context) => SignUpPage()));
+                                        builder: (context) => LoginPage()));
                               },
                               child: myText(
-                                  text: 'Sign Up.',
+                                  text: 'Sign In.',
                                   color: green,
                                   fontSize: 13,
                                   fontWeight: FontWeight.w400),
