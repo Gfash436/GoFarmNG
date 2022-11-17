@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../Constants/controllers.dart';
 import '../../Styles/colors.dart';
 import '../../Widgets/button.dart';
 import '../../Widgets/myText.dart';
@@ -16,6 +15,17 @@ class NewPassword extends StatefulWidget {
 }
 
 class _NewPasswordState extends State<NewPassword> {
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+
+  @override
+  void dispose() {
+    _passwordController.clear();
+    _passwordController.clear();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -35,12 +45,12 @@ class _NewPasswordState extends State<NewPassword> {
                           passwordTextField(
                               title: 'Password',
                               hint: 'enter password',
-                              controller: passwordController),
+                              controller: _passwordController),
                           const SizedBox(height: 16),
                           passwordTextField(
                               title: 'Confirm Password',
                               hint: 'enter password',
-                              controller: confirmPasswordController),
+                              controller: _confirmPasswordController),
                           const SizedBox(height: 24),
                           customButton(
                               context: context,

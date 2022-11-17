@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gofarmng/Screens/Authentication/loginPage.dart';
 
-import '../../Constants/controllers.dart';
 import '../../Styles/colors.dart';
 import '../../Widgets/button.dart';
 import '../../Widgets/myText.dart';
@@ -16,6 +15,14 @@ class Verification extends StatefulWidget {
 }
 
 class _VerificationState extends State<Verification> {
+  final TextEditingController _emailController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.clear();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -46,7 +53,7 @@ class _VerificationState extends State<Verification> {
                           customTextField(
                               title: 'Email Address',
                               hint: 'example@gmail.com',
-                              controller: emailController,
+                              controller: _emailController,
                               keyboardType: TextInputType.emailAddress),
                           const SizedBox(height: 8),
                           Row(

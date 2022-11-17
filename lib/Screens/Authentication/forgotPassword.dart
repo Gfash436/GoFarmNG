@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../Constants/controllers.dart';
 import '../../Styles/colors.dart';
 import '../../Widgets/button.dart';
 import '../../Widgets/myText.dart';
@@ -17,6 +16,14 @@ class ForgotPassword extends StatefulWidget {
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
+  final TextEditingController _emailController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.clear();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -36,7 +43,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                           customTextField(
                               title: 'Email Address',
                               hint: 'example@gmail.com',
-                              controller: emailController,
+                              controller: _emailController,
                               keyboardType: TextInputType.emailAddress),
                           const SizedBox(height: 16),
                           Row(
