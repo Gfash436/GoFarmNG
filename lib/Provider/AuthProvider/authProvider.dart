@@ -25,6 +25,7 @@ class Authentication extends ChangeNotifier {
       required String email,
       required String password,
       required String confirmPassword,
+      required String buyer,
       BuildContext? context}) async {
     _isLoading = false;
     notifyListeners();
@@ -39,7 +40,8 @@ class Authentication extends ChangeNotifier {
       "phoneNumber": phoneNumber,
       "password": password,
       "email": email,
-      "confirmPassword": confirmPassword
+      "confirmPassword": confirmPassword,
+      "role": buyer
     };
     print(body);
 
