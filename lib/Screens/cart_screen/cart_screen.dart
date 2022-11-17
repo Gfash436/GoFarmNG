@@ -5,8 +5,19 @@ import 'package:gofarmng/Styles/colors.dart';
 import '../../Widgets/myText.dart';
 import 'cart_component.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
+
+  @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  @override
+  void initState() {
+    // showBottomSheet(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,3 +56,15 @@ class CartScreen extends StatelessWidget {
     );
   }
 }
+
+// showBottomSheet(BuildContext context) {
+//   showModalBottomSheet(
+//     context: context,
+//     builder: (BuildContext context) {
+//       return Container(
+//         height: 200,
+//         color: Colors.amber,
+//       );
+//     },
+//   );
+// }
