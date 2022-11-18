@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gofarmng/Screens/home_screen/home_screen.dart';
+
+import 'Screens/splashScreen.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Nunito',
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }
