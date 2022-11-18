@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:gofarmng/Screens/home_screen/home_screen.dart';
-=======
-import 'package:gofarmng/Screens/splashScreen.dart';
->>>>>>> 672c34a (new committed)
+
+import 'Screens/splashScreen.dart';
+
 
 void main() {
   runApp(const MyApp());
