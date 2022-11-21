@@ -54,9 +54,6 @@ class PieChart2State extends State {
           height: getProportionateScreenWidth(
             105,
           ),
-          // width: getProportionateScreenWidth(
-          //   120,
-          // ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -149,26 +146,27 @@ class Indicator extends StatelessWidget {
     return Text.rich(
       textAlign: TextAlign.right,
       TextSpan(
-          text: text1,
-          style: TextStyle(
-            fontSize: getProportionateScreenWidth(
-              14,
-            ),
-            color: titleColor,
-            fontWeight: FontWeight.w400,
+        text: text1,
+        style: TextStyle(
+          fontSize: getProportionateScreenWidth(
+            14,
           ),
-          children: [
-            TextSpan(
-              text: text2,
-              style: TextStyle(
-                fontSize: getProportionateScreenWidth(
-                  14,
-                ),
-                color: const Color(0xff000000),
-                fontWeight: FontWeight.w400,
+          color: titleColor,
+          fontWeight: FontWeight.w400,
+        ),
+        children: [
+          TextSpan(
+            text: text2,
+            style: TextStyle(
+              fontSize: getProportionateScreenWidth(
+                14,
               ),
-            )
-          ]),
+              color: const Color(0xff000000),
+              fontWeight: FontWeight.w400,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
