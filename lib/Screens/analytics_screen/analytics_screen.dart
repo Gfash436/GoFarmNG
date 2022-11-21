@@ -3,6 +3,10 @@ import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Screens/home_screen/app_bar.dart';
 import 'package:gofarmng/Screens/home_screen/app_drawer.dart';
 
+import '../../Widgets/myText.dart';
+import 'graph.dart';
+import 'graphic.dart';
+import 'pie_chart.dart';
 import 'reuseable_balance_container.dart';
 
 class AnalyticsScreen extends StatelessWidget {
@@ -11,6 +15,7 @@ class AnalyticsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig.init(context);
     return Scaffold(
       key: scafoldKey,
       appBar: appBar(context, scafoldKey),
@@ -24,8 +29,9 @@ class AnalyticsScreen extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                margin:
-                    EdgeInsets.only(bottom: getProportionateScreenHeight(16)),
+                margin: EdgeInsets.only(
+                  bottom: getProportionateScreenHeight(16),
+                ),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
@@ -63,11 +69,60 @@ class AnalyticsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                width: getProportionateScreenHeight(16),
+              Container(
+                margin: EdgeInsets.only(
+                  bottom: getProportionateScreenHeight(16),
+                  top: getProportionateScreenHeight(16),
+                ),
+                padding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(16),
+                  vertical: getProportionateScreenHeight(12),
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: const Offset(
+                        0,
+                        0,
+                      ),
+                      blurRadius: 2,
+                      spreadRadius: 0,
+                      color: const Color(0xff111111).withOpacity(.25),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          "Analytics",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: getProportionateScreenWidth(
+                                14,
+                              )),
+                        ),
+                      ],
+                    ),
+                    const GraphComponent()
+                  ],
+                ),
               ),
               Container(
-                height: getProportionateScreenHeight(286),
+                margin: EdgeInsets.only(
+                  bottom: getProportionateScreenHeight(16),
+                  top: getProportionateScreenHeight(16),
+                ),
+                padding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(
+                    16,
+                  ),
+                  vertical: getProportionateScreenHeight(12),
+                ),
+                height: getProportionateScreenHeight(207),
                 width: getProportionateScreenWidth(335),
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -81,31 +136,31 @@ class AnalyticsScreen extends StatelessWidget {
                       blurRadius: 2,
                       spreadRadius: 0,
                       color: const Color(0xff111111).withOpacity(.25),
-                    )
+                    ),
                   ],
                 ),
-              ),
-              SizedBox(
-                width: getProportionateScreenHeight(16),
-              ),
-              Container(
-                height: getProportionateScreenHeight(286),
-                width: getProportionateScreenWidth(335),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(8),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: const Offset(
-                        0,
-                        0,
-                      ),
-                      blurRadius: 2,
-                      spreadRadius: 0,
-                      color: const Color(0xff111111).withOpacity(.25),
-                    )
-                  ],
-                ),
+                child: SizedBox(
+                    // height: getProportionateScreenHeight(134),
+                    width: getProportionateScreenHeight(134),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Order Status",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: getProportionateScreenWidth(
+                                14,
+                              )),
+                        ),
+                        SizedBox(
+                          height: getProportionateScreenWidth(
+                            16,
+                          ),
+                        ),
+                        const PieChartComponent(),
+                      ],
+                    )),
               ),
             ],
           ),

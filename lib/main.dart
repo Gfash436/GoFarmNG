@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'Screens/analytics_screen/analytics_screen.dart';
 import 'Screens/splashScreen.dart';
 
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Nunito',
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(),
+      home:  AnalyticsScreen(),
     );
   }
 }
