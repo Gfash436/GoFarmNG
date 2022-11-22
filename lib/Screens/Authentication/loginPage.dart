@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gofarmng/Constants/size_config.dart';
+import 'package:gofarmng/Provider/AuthProvider/authProvider.dart';
 import 'package:gofarmng/Screens/Authentication/forgotPassword.dart';
-import 'package:gofarmng/Screens/home_screen/home_screen.dart';
+import 'package:gofarmng/Utilities/snack_messages.dart';
 import 'package:gofarmng/Widgets/textField.dart';
+import 'package:provider/provider.dart';
 
 import '../../Styles/colors.dart';
 import '../../Widgets/button.dart';
@@ -18,15 +20,16 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _loginEmailController = TextEditingController();
+  final TextEditingController _loginPasswordController =
+      TextEditingController();
 
   bool _checked = false;
 
   @override
   void dispose() {
-    _emailController.clear();
-    _passwordController.clear();
+    _loginEmailController.clear();
+    _loginPasswordController.clear();
     super.dispose();
   }
 
@@ -42,7 +45,7 @@ class _LoginPageState extends State<LoginPage> {
                       padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
                       child: Column(children: [
                         myText(
-                            text: 'Sign Up',
+                            text: 'Sign In',
                             color: textColor,
                             fontSize: 24,
                             fontWeight: FontWeight.w700),
@@ -50,13 +53,13 @@ class _LoginPageState extends State<LoginPage> {
                         customTextField(
                             title: 'Email Address',
                             hint: 'example@gmail.com',
-                            controller: _emailController,
+                            controller: _loginEmailController,
                             keyboardType: TextInputType.emailAddress),
                         const SizedBox(height: 16),
                         passwordTextField(
                             title: 'Password',
                             hint: 'enter password',
-                            controller: _passwordController),
+                            controller: _loginPasswordController),
                         Row(children: [
                           Checkbox(
                             value: _checked,
@@ -97,16 +100,34 @@ class _LoginPageState extends State<LoginPage> {
                           )
                         ]),
                         const SizedBox(height: 24),
-                        customButton(
-                            context: context,
-                            text: 'Sign In',
-                            tap: (() {
-                              Navigator.push(
-                                  context,
-                                  CupertinoPageRoute(
-                                      builder: (context) =>
-                                          const HomeScreen()));
-                            })),
+                        Consumer<AuthenticationProvider>(
+                            builder: (context, auth, snapshot) {
+                          WidgetsBinding.instance.addPostFrameCallback((_) {
+                            if (auth.resMessage != "") {
+                              showMessage(
+                                  message: auth.resMessage, context: context);
+
+                              //clear the response message to avoide duplicate
+                              auth.clear();
+                            }
+                          });
+                          return customButton(
+                              context: context,
+                              text: 'Sign In',
+                              tap: (() {
+                                // if (_loginEmailController.text.isEmpty ||
+                                //     _loginPasswordController.text.isEmpty) {
+                                //   showMessage(
+                                //       message: 'Enter correct information',
+                                //       context: context);
+                                // } else {
+                                auth.LoginUser(
+                                    email: _loginEmailController.text.trim(),
+                                    password: _loginPasswordController.text,
+                                    context: context);
+                                // }
+                              }));
+                        }),
                         const SizedBox(height: 24),
                         SizedBox(
                           width: getProportionateScreenWidth(300),
@@ -149,7 +170,8 @@ class _LoginPageState extends State<LoginPage> {
                                 Navigator.push(
                                     context,
                                     CupertinoPageRoute(
-                                        builder: (context) => SignUpPage()));
+                                        builder: (context) =>
+                                            const SignUpPage()));
                               },
                               child: myText(
                                   text: 'Sign Up.',
