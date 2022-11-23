@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Screens/home_screen/app_bar.dart';
 import 'package:gofarmng/Screens/home_screen/app_drawer.dart';
@@ -7,7 +6,6 @@ import 'package:gofarmng/Screens/home_screen/app_drawer.dart';
 import '../../Styles/colors.dart';
 import '../../Widgets/myText.dart';
 import 'graph.dart';
-import 'graphic.dart';
 import 'pie_chart.dart';
 import 'reuseable_balance_container.dart';
 
@@ -272,28 +270,29 @@ class AnalyticsPieChart extends StatelessWidget {
         ],
       ),
       child: SizedBox(
-          // height: getProportionateScreenHeight(134),
-          width: getProportionateScreenHeight(134),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Order Status",
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: getProportionateScreenWidth(
-                    14,
-                  ),
+        height: getProportionateScreenHeight(134),
+        width: getProportionateScreenHeight(134),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Order Status",
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: getProportionateScreenWidth(
+                  14,
                 ),
               ),
-              SizedBox(
-                height: getProportionateScreenWidth(
-                  16,
-                ),
+            ),
+            SizedBox(
+              height: getProportionateScreenHeight(
+                8,
               ),
-              const PieChartComponent(),
-            ],
-          )),
+            ),
+            const PieChartComponent(),
+          ],
+        ),
+      ),
     );
   }
 }
