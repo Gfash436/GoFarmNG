@@ -2,15 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Screens/Authentication/loginPage.dart';
-<<<<<<< HEAD
-import 'package:gofarmng/Screens/Authentication/verification.dart';
-import 'package:gofarmng/Widgets/textField.dart';
-
-import '../../Constants/controllers.dart';
-import '../../Styles/colors.dart';
-import '../../Widgets/button.dart';
-import '../../Widgets/myText.dart';
-=======
 import 'package:gofarmng/Widgets/textField.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +11,6 @@ import '../../../Styles/colors.dart';
 import '../../../Utilities/snack_messages.dart';
 import '../../../Widgets/button.dart';
 import '../../../Widgets/myText.dart';
->>>>>>> origin/master
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -30,11 +20,6 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-<<<<<<< HEAD
-  bool _checked = false;
-
-  @override
-=======
   final List<String> roles = ['buyer', 'seller'];
   String? selectedValue;
 
@@ -63,7 +48,6 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   @override
->>>>>>> origin/master
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return SafeArea(
@@ -80,24 +64,6 @@ class _SignUpPageState extends State<SignUpPage> {
                             fontSize: 24,
                             fontWeight: FontWeight.w700),
                         const SizedBox(height: 32),
-<<<<<<< HEAD
-                        customTextField(
-                            title: 'Full name',
-                            hint: 'Enter full name',
-                            controller: fullNameController,
-                            keyboardType: TextInputType.name),
-                        const SizedBox(height: 8),
-                        customTextField(
-                            title: 'Email Address',
-                            hint: 'example@gmail.com',
-                            controller: emailController,
-                            keyboardType: TextInputType.emailAddress),
-                        const SizedBox(height: 8),
-                        passwordTextField(
-                            title: 'Password',
-                            hint: 'enter password',
-                            controller: passwordController),
-=======
                         Row(
                           children: [
                             SizedBox(
@@ -199,16 +165,11 @@ class _SignUpPageState extends State<SignUpPage> {
                             title: 'Password',
                             hint: 'enter password',
                             controller: _passwordController),
->>>>>>> origin/master
                         const SizedBox(height: 8),
                         passwordTextField(
                             title: 'Confirm Password',
                             hint: 'enter password',
-<<<<<<< HEAD
-                            controller: confirmPasswordController),
-=======
                             controller: _confirmPasswordController),
->>>>>>> origin/master
                         Row(children: [
                           Checkbox(
                             value: _checked,
@@ -230,18 +191,6 @@ class _SignUpPageState extends State<SignUpPage> {
                           )
                         ]),
                         const SizedBox(height: 8),
-<<<<<<< HEAD
-                        customButton(
-                            context: context,
-                            text: 'Sign Up',
-                            tap: (() {
-                              Navigator.pushReplacement(
-                                  context,
-                                  CupertinoPageRoute(
-                                      builder: (context) =>
-                                          const Verification()));
-                            })),
-=======
                         Consumer<AuthenticationProvider>(
                             builder: (context, auth, snapshot) {
                           WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -269,7 +218,6 @@ class _SignUpPageState extends State<SignUpPage> {
                                     context: context);
                               }));
                         }),
->>>>>>> origin/master
                         const SizedBox(height: 8),
                         SizedBox(
                           width: getProportionateScreenWidth(300),
