@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'Screens/analytics_screen/analytics_screen.dart';
 import 'Provider/AuthProvider/authProvider.dart';
 import 'Screens/splashScreen.dart';
+
 
 void main() {
   runApp(const MyApp());

@@ -14,6 +14,10 @@ class AppDrawer extends StatelessWidget {
       "title": "My Profile",
     },
     {
+      "icon": "assets/icons/Myprofile.svg",
+      "title": "Sell",
+    },
+    {
       "icon": "assets/icons/history.svg",
       "title": "Order History",
     },
@@ -24,6 +28,10 @@ class AppDrawer extends StatelessWidget {
     {
       "icon": "assets/icons/location.svg",
       "title": "My Address",
+    },
+    {
+      "icon": "assets/icons/track_order.svg",
+      "title": "Track Order",
     },
     {
       "icon": "assets/icons/settings.svg",
@@ -94,23 +102,27 @@ class AppDrawer extends StatelessWidget {
                       thickness: .5,
                       height: getProportionateScreenWidth(16),
                     ),
-                    itemBuilder: (context, index) => Row(
-                      children: [
-                        SvgPicture.asset(
-                          "${drawerList[index]["icon"]}",
-                          height: getProportionateScreenWidth(21),
-                          width: getProportionateScreenWidth(21),
-                        ),
-                        SizedBox(
-                          width: getProportionateScreenWidth(
-                            16,
+                    itemBuilder: (context, index) => Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: getProportionateScreenWidth(6)),
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            "${drawerList[index]["icon"]}",
+                            height: getProportionateScreenWidth(21),
+                            width: getProportionateScreenWidth(21),
                           ),
-                        ),
-                        myText(
-                          text: "${drawerList[index]["title"]}",
-                          fontSize: getProportionateScreenWidth(14),
-                        )
-                      ],
+                          SizedBox(
+                            width: getProportionateScreenWidth(
+                              16,
+                            ),
+                          ),
+                          myText(
+                            text: "${drawerList[index]["title"]}",
+                            fontSize: getProportionateScreenWidth(14),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
