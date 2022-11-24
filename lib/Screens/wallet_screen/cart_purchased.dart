@@ -30,7 +30,7 @@ class CartTransactionDetails extends StatelessWidget {
         border: Border.all(
           color: grey,
           width: .5,
-          strokeAlign: BorderSide.strokeAlignInside,
+          strokeAlign: StrokeAlign.inside,
           style: BorderStyle.solid,
         ),
       ),
