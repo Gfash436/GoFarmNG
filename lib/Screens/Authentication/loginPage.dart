@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gofarmng/Constants/google_sign_in.dart';
 import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Provider/AuthProvider/authProvider.dart';
 import 'package:gofarmng/Screens/Authentication/forgotPassword.dart';
@@ -8,8 +9,10 @@ import 'package:gofarmng/Widgets/textField.dart';
 import 'package:provider/provider.dart';
 
 import '../../Styles/colors.dart';
+import '../../Utilities/routers.dart';
 import '../../Widgets/button.dart';
 import '../../Widgets/myText.dart';
+import '../home_screen/home_screen.dart';
 import 'signUpPage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -155,7 +158,11 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         const SizedBox(height: 24),
-                        googleButton(context: context),
+                        googleButton(
+                            tap: () {
+                              signIn();
+                            },
+                            context: context),
                         const SizedBox(height: 16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -167,11 +174,13 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                        builder: (context) =>
-                                            const SignUpPage()));
+                                PageNavigator(ctx: context)
+                                    .nextPage(page: const SignUpPage());
+                                // Navigator.push(
+                                //     context,
+                                //     CupertinoPageRoute(
+                                //         builder: (context) =>
+                                //             const SignUpPage()));
                               },
                               child: myText(
                                   text: 'Sign Up.',
@@ -183,5 +192,11 @@ class _LoginPageState extends State<LoginPage> {
                         )
                       ]))),
             )));
+  }
+
+  Future signIn() async {
+    await GoogleSignInApi.login();
+
+    PageNavigator(ctx: context).nextPage(page: const HomeScreen());
   }
 }
