@@ -4,6 +4,7 @@ import 'package:gofarmng/Screens/analytics_screen/analytics_screen.dart';
 import 'package:gofarmng/Screens/favorite_screen/favorite_screen.dart';
 import 'package:gofarmng/Screens/wallet_screen/wallet_screen.dart';
 
+import '../../models/products.dart';
 import 'bottom_navBar.dart';
 import 'home_screen_body.dart';
 
@@ -31,13 +32,15 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
+  void initState() {
+    fetchAllProducts();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
-      // key: scafoldKey,
-      // backgroundColor: Colors.brown,
-      // backgroundColor: Colors.white,
-      // drawer: AppDrawer(),
       body: SafeArea(child: _pages[_selectedIndex]),
       bottomNavigationBar:
           NavBar(navigatoTo: navigatoTo, selectedIndex: _selectedIndex),

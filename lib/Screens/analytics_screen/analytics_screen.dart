@@ -288,7 +288,7 @@ class AnalyticsPieChart extends StatelessWidget {
               ),
               SizedBox(
                 height: getProportionateScreenWidth(
-                  16,
+                  8,
                 ),
               ),
               const PieChartComponent(),
