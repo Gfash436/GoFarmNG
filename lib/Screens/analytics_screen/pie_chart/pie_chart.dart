@@ -4,6 +4,71 @@ import 'package:fl_chart/fl_chart.dart';
 
 import 'package:gofarmng/Constants/size_config.dart';
 
+//This is the starting point or first section of the PIE-CHART ILLUSTRATION
+class AnalyticsPieChart extends StatelessWidget {
+  const AnalyticsPieChart({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(
+        bottom: getProportionateScreenHeight(16),
+        top: getProportionateScreenHeight(16),
+      ),
+      padding: EdgeInsets.symmetric(
+        horizontal: getProportionateScreenWidth(
+          16,
+        ),
+        vertical: getProportionateScreenHeight(12),
+      ),
+      height: getProportionateScreenHeight(207),
+      width: getProportionateScreenWidth(335),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: [
+          BoxShadow(
+            offset: const Offset(
+              0,
+              0,
+            ),
+            blurRadius: 2,
+            spreadRadius: 0,
+            color: const Color(0xff111111).withOpacity(.25),
+          ),
+        ],
+      ),
+      child: SizedBox(
+          // height: getProportionateScreenHeight(134),
+          width: getProportionateScreenHeight(134),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Order Status",
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: getProportionateScreenWidth(
+                    14,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: getProportionateScreenWidth(
+                  8,
+                ),
+              ),
+              const PieChartComponent(),
+            ],
+          )),
+    );
+  }
+}
+
+
+//This is the starting point or second section of the PIE-CHART ILLUSTRATION
 class PieChartComponent extends StatefulWidget {
   const PieChartComponent({super.key});
 

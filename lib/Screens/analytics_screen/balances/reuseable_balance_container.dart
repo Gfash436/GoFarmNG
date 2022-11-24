@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../Constants/size_config.dart';
-import '../../Styles/colors.dart';
-import '../../Widgets/myText.dart';
+import '../../../Constants/size_config.dart';
+import '../../../Styles/colors.dart';
+import '../../../Widgets/myText.dart';
 
 class ReuseableBalanceContainer extends StatelessWidget {
   const ReuseableBalanceContainer({

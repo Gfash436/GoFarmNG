@@ -1,6 +1,61 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+import '../../../Constants/size_config.dart';
+
+class AnalyticsLineGraph extends StatelessWidget {
+  const AnalyticsLineGraph({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(
+        bottom: getProportionateScreenHeight(16),
+        top: getProportionateScreenHeight(16),
+      ),
+      padding: EdgeInsets.symmetric(
+        horizontal: getProportionateScreenWidth(16),
+        vertical: getProportionateScreenHeight(12),
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+        boxShadow: [
+          BoxShadow(
+            offset: const Offset(
+              0,
+              0,
+            ),
+            blurRadius: 2,
+            spreadRadius: 0,
+            color: const Color(0xff111111).withOpacity(.25),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Text(
+                "Analytics",
+                style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: getProportionateScreenWidth(
+                      14,
+                    )),
+              ),
+            ],
+          ),
+          const GraphComponent()
+        ],
+      ),
+    );
+  }
+}
+
+
 class GraphComponent extends StatelessWidget {
   const GraphComponent({super.key});
 
@@ -175,3 +230,4 @@ LineChartData farmData() {
     ],
   );
 }
+
