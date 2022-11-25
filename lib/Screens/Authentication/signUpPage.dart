@@ -13,6 +13,8 @@ import '../../../Utilities/snack_messages.dart';
 import '../../../Widgets/button.dart';
 import '../../../Widgets/myText.dart';
 import '../../Constants/google_sign_in.dart';
+import '../../Utilities/routers.dart';
+import '../home_screen/home_screen.dart';
 
 GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['profile', 'email']);
 
@@ -249,9 +251,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                         const SizedBox(height: 16),
-                        googleButton(
-                            // tap: signUp,
-                            context: context),
+                        googleButton(tap: signUp, context: context),
                         const SizedBox(height: 8),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -279,8 +279,17 @@ class _SignUpPageState extends State<SignUpPage> {
             )));
   }
 
+  // Future function for Google signin
   Future signUp() async {
-    await GoogleSignInApi.register();
+    final user = await GoogleSignInApi.login();
+
+    if (user == null) {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Sign in Failed')));
+    } else {
+      PageNavigator(ctx: context).nextPage(page: HomeScreen());
+    }
   }
 }
 
