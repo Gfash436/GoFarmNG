@@ -192,7 +192,7 @@ class _LoginPageState extends State<LoginPage> {
       ScaffoldMessenger.of(context)
           .showSnackBar(const SnackBar(content: Text('Sign in Failed')));
     } else {
-      PageNavigator(ctx: context).nextPage(page: HomeScreenBody());
+      PageNavigator(ctx: context).nextPage(page: HomeScreen());
     }
   }
 }

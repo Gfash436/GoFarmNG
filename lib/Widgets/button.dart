@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gofarmng/Styles/colors.dart';
 
+import '../Constants/size_config.dart';
 import 'image.dart';
+import 'myText.dart';
 
 Widget customButton(
     {VoidCallback? tap,
@@ -83,4 +86,37 @@ Widget googleButton(
               ),
             ],
           )));
+}
+
+Column drawerButton(
+    BuildContext context, String title, String icon, VoidCallback tap) {
+  return Column(children: [
+    GestureDetector(
+      onTap: tap,
+      child: SizedBox(
+        child: Row(
+          children: [
+            SvgPicture.asset(
+              icon,
+              height: getProportionateScreenWidth(21),
+              width: getProportionateScreenWidth(21),
+            ),
+            SizedBox(
+              width: getProportionateScreenWidth(
+                16,
+              ),
+            ),
+            myText(
+              text: title,
+              fontSize: getProportionateScreenWidth(14),
+            ),
+          ],
+        ),
+      ),
+    ),
+    Divider(
+      thickness: .5,
+      height: getProportionateScreenWidth(16),
+    ),
+  ]);
 }
