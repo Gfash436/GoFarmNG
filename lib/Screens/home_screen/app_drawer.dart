@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gofarmng/Widgets/myText.dart';
 
+import '../../Constants/google_sign_in.dart';
 import '../../Constants/size_config.dart';
+import '../../Utilities/routers.dart';
+import '../Authentication/loginPage.dart';
 
 class AppDrawer extends StatelessWidget {
   AppDrawer({
@@ -114,6 +117,19 @@ class AppDrawer extends StatelessWidget {
                     ),
                   ),
                 ),
+                const SizedBox(height: 30),
+                SizedBox(
+                  height: 40,
+                  width: MediaQuery.of(context).size.width,
+                  child: ElevatedButton(
+                      onPressed: () async {
+                        await GoogleSignInApi.logout();
+
+                        PageNavigator(ctx: context)
+                            .nextPageOnly(page: const LoginPage());
+                      },
+                      child: const Text('Log out')),
+                )
               ],
             ),
           ),

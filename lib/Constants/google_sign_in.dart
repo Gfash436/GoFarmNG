@@ -5,8 +5,7 @@ class GoogleSignInApi {
 
   static Future<GoogleSignInAccount?> login() => _googleSignIn.signIn();
 
+  static Future<GoogleSignInAccount?> register() => _googleSignIn.signIn();
+
   static Future logout() => _googleSignIn.disconnect();
-  //then call the below function inside the logout button
-  // await GoogleSignInApi.logout();
-  // then route back to login page
 }

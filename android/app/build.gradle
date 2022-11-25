@@ -55,9 +55,9 @@ android {
 
     signingConfigs {
         debug {
-            keyAlias 'androiddebugkey'
+            keyAlias 'myandroidkey'
             keyPassword 'android'
-            storeFile file('gofarmngkey.jks')
+            storeFile file('farmkey.jks')
             storePassword 'android'
         }
     }
@@ -77,4 +77,6 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+     implementation 'com.google.android.gms:play-services-auth:19.0.0'
+
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gofarmng/Screens/home_screen/app_bar.dart';
 import 'package:gofarmng/Screens/home_screen/app_drawer.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../Constants/size_config.dart';
 import '../../Widgets/myText.dart';
@@ -10,10 +11,9 @@ import 'popular_categories.dart';
 import 'top_selling_products.dart';
 
 class HomeScreenBody extends StatelessWidget {
-  HomeScreenBody({
-    super.key,
-  });
   final scafoldKey = GlobalKey<ScaffoldState>();
+
+  HomeScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:gofarmng/Constants/google_sign_in.dart';
 import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Provider/AuthProvider/authProvider.dart';
+import 'package:gofarmng/Provider/AuthProvider/dbProvider.dart';
 import 'package:gofarmng/Screens/Authentication/forgotPassword.dart';
+import 'package:gofarmng/Screens/home_screen/app_drawer.dart';
 import 'package:gofarmng/Utilities/snack_messages.dart';
 import 'package:gofarmng/Widgets/textField.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +14,9 @@ import '../../Styles/colors.dart';
 import '../../Utilities/routers.dart';
 import '../../Widgets/button.dart';
 import '../../Widgets/myText.dart';
+import '../../testGoogle.dart';
 import '../home_screen/home_screen.dart';
+import '../home_screen/home_screen_body.dart';
 import 'signUpPage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -118,12 +122,6 @@ class _LoginPageState extends State<LoginPage> {
                               context: context,
                               text: 'Sign In',
                               tap: (() {
-                                // if (_loginEmailController.text.isEmpty ||
-                                //     _loginPasswordController.text.isEmpty) {
-                                //   showMessage(
-                                //       message: 'Enter correct information',
-                                //       context: context);
-                                // } else {
                                 auth.LoginUser(
                                     email: _loginEmailController.text.trim(),
                                     password: _loginPasswordController.text,
@@ -158,11 +156,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         const SizedBox(height: 24),
-                        googleButton(
-                            tap: () {
-                              signIn();
-                            },
-                            context: context),
+                        googleButton(tap: signIn, context: context),
                         const SizedBox(height: 16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -176,11 +170,6 @@ class _LoginPageState extends State<LoginPage> {
                               onTap: () {
                                 PageNavigator(ctx: context)
                                     .nextPage(page: const SignUpPage());
-                                // Navigator.push(
-                                //     context,
-                                //     CupertinoPageRoute(
-                                //         builder: (context) =>
-                                //             const SignUpPage()));
                               },
                               child: myText(
                                   text: 'Sign Up.',
@@ -194,9 +183,16 @@ class _LoginPageState extends State<LoginPage> {
             )));
   }
 
+// Future function for Google signin
   Future signIn() async {
-    await GoogleSignInApi.login();
+    final user = await GoogleSignInApi.login();
 
-    PageNavigator(ctx: context).nextPage(page: const HomeScreen());
+    if (user == null) {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Sign in Failed')));
+    } else {
+      PageNavigator(ctx: context).nextPage(page: HomeScreenBody());
+    }
   }
 }

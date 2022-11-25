@@ -10,7 +10,7 @@ class AnalyticsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scafoldKey,
-      appBar: appBar(context,scafoldKey),
+      appBar: appBar(context, scafoldKey),
       drawer: AppDrawer(),
     );
   }
