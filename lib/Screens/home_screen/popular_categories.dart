@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gofarmng/Provider/AuthProvider/authProvider.dart';
+import 'package:gofarmng/models/products.dart';
+import 'package:provider/provider.dart';
 
 import '../../Constants/size_config.dart';
 import '../../Styles/colors.dart';
@@ -11,77 +14,100 @@ class PopularCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            myText(
-              text: "Popular Categories",
-              fontSize: getProportionateScreenHeight(16),
-            ),
-            myText(
-              text: "View all",
-              fontSize: getProportionateScreenHeight(12),
-              color: green,
-            ),
-          ],
-        ),
-        SizedBox(
-          height: getProportionateScreenHeight(
-            8,
+    return Consumer<AuthenticationProvider>(builder: (context, value, child) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              myText(
+                text: "Popular Categories",
+                fontSize: getProportionateScreenHeight(16),
+              ),
+              myText(
+                text: "View all",
+                fontSize: getProportionateScreenHeight(12),
+                color: green,
+              ),
+            ],
           ),
-        ),
-        Container(
-          color: Colors.white,
-          height: getProportionateScreenWidth(
-            72,
+          SizedBox(
+            height: getProportionateScreenHeight(
+              8,
+            ),
           ),
-          child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemCount: 10,
-              separatorBuilder: (BuildContext context, int index) => SizedBox(
-                    width: getProportionateScreenWidth(10),
-                  ),
-              itemBuilder: (BuildContext context, int index) {
-                return SizedBox(
-                  // height: 72,
-                  width: getProportionateScreenHeight(48),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        height: getProportionateScreenHeight(48),
-                        width: getProportionateScreenHeight(48),
-                        decoration: BoxDecoration(
-                          boxShadow: const [
-                            BoxShadow(
-                              color:  Color(0x40111111),
-                              offset: Offset(0, 1),
-                              blurRadius: 4,
-                              spreadRadius: 0,
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: Image.asset("assets/images/orange.png"),
-                      ),
-                      SizedBox(
-                        height: getProportionateScreenHeight(8),
-                      ),
-                      myText(
-                        text: "Fruits",
-                        color: const Color(0xff353535),
-                        fontSize: getProportionateScreenWidth(12),
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ],
-                  ),
-                );
-              }),
-        ),
-      ],
-    );
+          Container(
+            color: Colors.white,
+            height: getProportionateScreenWidth(
+              72,
+            ),
+            child: FutureBuilder(
+                future: AuthenticationProvider().fetchAllProducts(),
+                builder: (context, snapshot) {
+                  return !snapshot.hasData && !snapshot.hasError
+                      ? const Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      : snapshot.hasError
+                          ? Text(snapshot.error.toString())
+                          : ListView.separated(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: snapshot.data!.data!.length,
+                              separatorBuilder:
+                                  (BuildContext context, int index) => SizedBox(
+                                        width: getProportionateScreenWidth(10),
+                                      ),
+                              itemBuilder: (BuildContext context, int index) {
+                                // final apidata = snapshot.data;
+                                // print();
+                                final product = snapshot.data!.data![index];
+                                return SizedBox(
+                                  // height: 72,
+                                  width: getProportionateScreenHeight(48),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        height:
+                                            getProportionateScreenHeight(48),
+                                        width: getProportionateScreenHeight(48),
+                                        decoration: BoxDecoration(
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              color: Color(0x40111111),
+                                              offset: Offset(0, 1),
+                                              blurRadius: 4,
+                                              spreadRadius: 0,
+                                            ),
+                                          ],
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                        child: Image.network(
+                                          "${product.productPicture}",
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: getProportionateScreenHeight(8),
+                                      ),
+                                      myText(
+                                        text:
+                                            "${product.description}",
+                                        color: const Color(0xff353535),
+                                        fontSize:
+                                            getProportionateScreenWidth(12),
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              });
+                }),
+          ),
+        ],
+      );
+    });
   }
 }

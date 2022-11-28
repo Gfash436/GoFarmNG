@@ -3,7 +3,9 @@ import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Screens/analytics_screen/analytics_screen.dart';
 import 'package:gofarmng/Screens/favorite_screen/favorite_screen.dart';
 import 'package:gofarmng/Screens/wallet_screen/wallet_screen.dart';
+import 'package:provider/provider.dart';
 
+import '../../Provider/AuthProvider/authProvider.dart';
 import '../../models/products.dart';
 import 'bottom_navBar.dart';
 import 'home_screen_body.dart';
@@ -19,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // final TextEditingController searchController = TextEditingController();
   int _selectedIndex = 0;
   // final scafoldKey = GlobalKey<ScaffoldState>();
+  
   static final List<Widget> _pages = [
     HomeScreenBody(),
     AnalyticsScreen(),
@@ -31,14 +34,10 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  @override
-  void initState() {
-    fetchAllProducts();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
+    // final displayData = Provider.of<AuthenticationProvider>(context);
     SizeConfig.init(context);
     return Scaffold(
       body: SafeArea(child: _pages[_selectedIndex]),

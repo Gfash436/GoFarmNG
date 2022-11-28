@@ -58,19 +58,24 @@ class _LoginState extends State<Login> {
                     text: 'Sign In',
                     tap: () {
                       Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                              builder: ((context) => LoginPage())));
+                        context,
+                        CupertinoPageRoute(
+                          builder: ((context) => LoginPage()),
+                        ),
+                      );
                     }),
                 customButton(
-                    context: context,
-                    text: 'Sign Up',
-                    tap: () {
-                      Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                              builder: ((context) => const SignUpPage())));
-                    })
+                  context: context,
+                  text: 'Sign Up',
+                  tap: () {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: ((context) => const SignUpPage()),
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
           ),

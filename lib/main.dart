@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gofarmng/Screens/Authentication/loginPage.dart';
 import 'package:provider/provider.dart';
 
 import 'Screens/analytics_screen/analytics_screen.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Nunito',
           primarySwatch: Colors.blue,
         ),
-        home: const SplashScreen(),
+        home: const LoginPage(),
       ),
     );
   }

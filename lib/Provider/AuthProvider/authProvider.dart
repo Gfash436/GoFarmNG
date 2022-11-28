@@ -10,6 +10,7 @@ import 'package:gofarmng/Utilities/routers.dart';
 import 'package:http/http.dart' as http;
 
 import '../../Screens/home_screen/home_screen.dart';
+import '../../models/products.dart';
 
 class AuthenticationProvider extends ChangeNotifier {
   //Base Url
@@ -154,4 +155,54 @@ class AuthenticationProvider extends ChangeNotifier {
     _resMessage = "";
     notifyListeners();
   }
+
+  // Fetch all products
+  Future<AllProducts> fetchAllProducts() async {
+    const String url = "https://gofarmng.herokuapp.com/api/v1/findall";
+    // const String url = "https://gofarmng.herokuapp.com/api/v1/findall?page=1&limit=5";
+    String accessToken = await DatabaseProvider().getToken();
+    print("This is the gotten token: $accessToken");
+    final headers = {
+      "Content-type": "application/json; charset=utf-8",
+      "Accept": "/",
+      "Authorization": "Bearer $accessToken",
+    };
+    return http
+        .get(
+      Uri.parse(url),
+      headers: headers,
+    )
+        .then((data) {
+      if (data.statusCode == 200) {
+        final jsonData = json.decode(data.body);
+        // print("Type is:${jsonData.runtimeType} & size is: ${jsonData.length}");
+        // final products = <Data>[];
+        // for (var item in jsonData) {
+        //   products.add(Data.fromJson(item));
+        // }
+        // print(products.length);
+        // return products;
+        return AllProducts.fromJson(jsonData);
+      }
+      throw Exception("Something is wrong");
+    });
+// return products;
+    // final result = jsonDecode(response.body)["data"];
+    // final data = result.map((e) => Data.fromJson(e)).toList();
+    // print("number of elements in data: ${data.lth}");
+    // print("number of elements in data: ${result.runtimeType}");
+    // print(response.body);
+    // return data;
+    // return result.map((e) => ProductDetails.fromJson(e)).toList();
+    // } else {
+    //   throw Exception(response.reasonPhrase);
+    // }
+  }
 }
+
+// Map<String, dynamic> values = snapshot.data.value;
+// values.forEach((key,values){
+//   list.add(values);
+// });
+// list = snapshot.data.value.map((value)=> value as Map<String,dynamic).toList();
+
