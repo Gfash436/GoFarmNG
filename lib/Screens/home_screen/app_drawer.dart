@@ -1,51 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gofarmng/Widgets/myText.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../Constants/google_sign_in.dart';
 import '../../Constants/size_config.dart';
+import '../../Utilities/routers.dart';
+import '../../Widgets/button.dart';
+import '../Authentication/loginPage.dart';
 
 class AppDrawer extends StatelessWidget {
-  AppDrawer({
-    super.key,
-  });
-  final List<Map<String, dynamic>> drawerList = [
-    {
-      "icon": "assets/icons/Myprofile.svg",
-      "title": "My Profile",
-    },
-    {
-      "icon": "assets/icons/Myprofile.svg",
-      "title": "Sell",
-    },
-    {
-      "icon": "assets/icons/history.svg",
-      "title": "Order History",
-    },
-    {
-      "icon": "assets/icons/payment.svg",
-      "title": "Payment",
-    },
-    {
-      "icon": "assets/icons/location.svg",
-      "title": "My Address",
-    },
-    {
-      "icon": "assets/icons/track_order.svg",
-      "title": "Track Order",
-    },
-    {
-      "icon": "assets/icons/settings.svg",
-      "title": "Settings",
-    },
-    {
-      "icon": "assets/icons/help.svg",
-      "title": "Help",
-    },
-    {
-      "icon": "assets/icons/logout.svg",
-      "title": "Logout",
-    },
-  ];
+  final GoogleSignInAccount? user;
+  const AppDrawer({Key? key, this.user}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -80,7 +46,7 @@ class AppDrawer extends StatelessWidget {
                         ),
                       ),
                       myText(
-                        text: "David",
+                        text: 'David',
                         fontWeight: FontWeight.bold,
                         fontSize: getProportionateScreenWidth(
                           24,
@@ -95,35 +61,28 @@ class AppDrawer extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  // height: getProportionateScreenHeight(360),
-                  child: ListView.separated(
-                    itemCount: drawerList.length,
-                    separatorBuilder: (context, index) => Divider(
-                      thickness: .5,
-                      height: getProportionateScreenWidth(16),
-                    ),
-                    itemBuilder: (context, index) => Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: getProportionateScreenWidth(6)),
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(
-                            "${drawerList[index]["icon"]}",
-                            height: getProportionateScreenWidth(21),
-                            width: getProportionateScreenWidth(21),
-                          ),
-                          SizedBox(
-                            width: getProportionateScreenWidth(
-                              16,
-                            ),
-                          ),
-                          myText(
-                            text: "${drawerList[index]["title"]}",
-                            fontSize: getProportionateScreenWidth(14),
-                          )
-                        ],
-                      ),
-                    ),
+                  child: Column(
+                    children: [
+                      drawerButton(context, 'My Profile',
+                          'assets/icons/Myprofile.svg', () {}),
+                      drawerButton(context, 'Order History',
+                          'assets/icons/history.svg', () {}),
+                      drawerButton(context, 'Payment',
+                          'assets/icons/payment.svg', () {}),
+                      drawerButton(context, 'My Address',
+                          'assets/icons/location.svg', () {}),
+                      drawerButton(context, 'Settings',
+                          'assets/icons/settings.svg', () {}),
+                      drawerButton(
+                          context, 'Help', 'assets/icons/help.svg', () {}),
+                      drawerButton(context, 'Logout', 'assets/icons/logout.svg',
+                          () async {
+                        await GoogleSignInApi.logout();
+
+                        PageNavigator(ctx: context)
+                            .nextPageOnly(page: const LoginPage());
+                      }),
+                    ],
                   ),
                 ),
               ],

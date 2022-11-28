@@ -131,7 +131,7 @@ class AuthenticationProvider extends ChangeNotifier {
         //Save user data and then navigate to homepage
         final authToken = response['access_token'];
         DatabaseProvider().saveToken(authToken);
-        PageNavigator(ctx: context).nextPageOnly(page: const HomeScreen());
+        PageNavigator(ctx: context).nextPageOnly(page: HomeScreen());
       } else {
         final response = json.decode(request.body);
         _resMessage = response['message'];

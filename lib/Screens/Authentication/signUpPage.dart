@@ -4,6 +4,7 @@ import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Screens/Authentication/loginPage.dart';
 import 'package:gofarmng/Widgets/textField.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Provider/AuthProvider/authProvider.dart';
@@ -11,6 +12,11 @@ import '../../../Styles/colors.dart';
 import '../../../Utilities/snack_messages.dart';
 import '../../../Widgets/button.dart';
 import '../../../Widgets/myText.dart';
+import '../../Constants/google_sign_in.dart';
+import '../../Utilities/routers.dart';
+import '../home_screen/home_screen.dart';
+
+GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['profile', 'email']);
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -245,7 +251,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                         const SizedBox(height: 16),
-                        googleButton(context: context),
+                        googleButton(tap: signUp, context: context),
                         const SizedBox(height: 8),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -272,4 +278,23 @@ class _SignUpPageState extends State<SignUpPage> {
                       ]))),
             )));
   }
+
+  // Future function for Google signin
+  Future signUp() async {
+    final user = await GoogleSignInApi.login();
+
+    if (user == null) {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Sign in Failed')));
+    } else {
+      PageNavigator(ctx: context).nextPage(page: HomeScreen());
+    }
+  }
 }
+
+// To logOut user
+// tap: _handleSignOut  then,
+// Future<void> _handleSignOut() async {
+// _googleSignIn.disconnect();
+// }

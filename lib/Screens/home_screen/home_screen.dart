@@ -3,16 +3,12 @@ import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Screens/analytics_screen/analytics_screen.dart';
 import 'package:gofarmng/Screens/favorite_screen/favorite_screen.dart';
 import 'package:gofarmng/Screens/wallet_screen/wallet_screen.dart';
-import 'package:provider/provider.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
-import '../../Provider/AuthProvider/authProvider.dart';
-import '../../models/products.dart';
 import 'bottom_navBar.dart';
 import 'home_screen_body.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -34,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  late final GoogleSignInAccount user;
 
   @override
   Widget build(BuildContext context) {
