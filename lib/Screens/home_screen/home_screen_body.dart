@@ -5,6 +5,7 @@ import 'package:gofarmng/Screens/home_screen/app_drawer.dart';
 import 'package:provider/provider.dart';
 
 import '../../Constants/size_config.dart';
+import '../../Provider/AuthProvider/fetchdata_provider.dart';
 import '../../Styles/colors.dart';
 import '../../Widgets/myText.dart';
 import '../../Widgets/search_textformfield.dart';
@@ -40,53 +41,49 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
       appBar: appBar(context, scafoldKey),
       drawer: AppDrawer(),
       body: Consumer<AuthenticationProvider>(builder: (_, data, __) {
-        final data = Provider.of<AuthenticationProvider>(context);
+        // final data = Provider.of<AuthenticationProvider>(context);
         // .fetchAllProducts();
-        return FutureBuilder(
-            future: AuthenticationProvider().fetchAllProducts(),
-            builder: (context, snapshot) {
-              return SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.only(
-                    left: getProportionateScreenWidth(20),
-                    right: getProportionateScreenWidth(20),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      myText(
-                        text: "Hey David!",
-                        fontSize: getProportionateScreenHeight(29),
-                        fontWeight: FontWeight.w700,
-                      ),
-                      SizedBox(
-                        height: getProportionateScreenHeight(11),
-                      ),
-                      const SearchTextFormField(),
-                      SizedBox(
-                        height: getProportionateScreenHeight(28),
-                      ),
-                      // const PopularCategories(),
-                      // const PopularCategories(),
-                      const PopularCategories(),
-                      // const BalanceDetails(),
-                      // const PopularCategories(),
-                      SizedBox(
-                        height: getProportionateScreenHeight(16),
-                      ),
-                      const TopSellingProducts(),
-                      SizedBox(
-                        height: getProportionateScreenHeight(16),
-                      ),
-                      const NewestArrival(),
-                      SizedBox(
-                        height: getProportionateScreenHeight(32),
-                      ),
-                    ],
-                  ),
+        return SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: getProportionateScreenWidth(20),
+              right: getProportionateScreenWidth(20),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                myText(
+                  text: "Hey David!",
+                  fontSize: getProportionateScreenHeight(29),
+                  fontWeight: FontWeight.w700,
                 ),
-              );
-            });
+                SizedBox(
+                  height: getProportionateScreenHeight(11),
+                ),
+                const SearchTextFormField(),
+                SizedBox(
+                  height: getProportionateScreenHeight(28),
+                ),
+                // const PopularCategories(),
+                // const PopularCategories(),
+                const PopularCategories(),
+                // const BalanceDetails(),
+                // const PopularCategories(),
+                SizedBox(
+                  height: getProportionateScreenHeight(16),
+                ),
+                const TopSellingProducts(),
+                SizedBox(
+                  height: getProportionateScreenHeight(16),
+                ),
+                const NewestArrival(),
+                SizedBox(
+                  height: getProportionateScreenHeight(32),
+                ),
+              ],
+            ),
+          ),
+        );
       }),
     );
   }

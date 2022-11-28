@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gofarmng/Provider/AuthProvider/authProvider.dart';
-import 'package:gofarmng/models/products.dart';
 import 'package:provider/provider.dart';
 
 import '../../Constants/size_config.dart';
+import '../../Provider/AuthProvider/fetchdata_provider.dart';
 import '../../Styles/colors.dart';
 import '../../Widgets/myText.dart';
 
@@ -43,7 +43,7 @@ class PopularCategories extends StatelessWidget {
               72,
             ),
             child: FutureBuilder(
-                future: AuthenticationProvider().fetchAllProducts(),
+                future: FetchDataProvider().fetchAllProducts(),
                 builder: (context, snapshot) {
                   return !snapshot.hasData && !snapshot.hasError
                       ? const Center(
