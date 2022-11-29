@@ -2,16 +2,21 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:gofarmng/Constants/url.dart';
 import 'package:gofarmng/Provider/AuthProvider/dbProvider.dart';
 import 'package:gofarmng/Screens/Authentication/verification.dart';
 import 'package:gofarmng/Utilities/routers.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:http/http.dart' as http;
 
+import '../../Constants/google_sign_in.dart';
 import '../../Screens/home_screen/home_screen.dart';
 
 class AuthenticationProvider extends ChangeNotifier {
+  late final GoogleSignInAccount user;
+
   //Base Url
   final requestBaseUrl = ApiUrl.baseUrl;
 
@@ -153,5 +158,17 @@ class AuthenticationProvider extends ChangeNotifier {
   void clear() {
     _resMessage = "";
     notifyListeners();
+  }
+
+  // Future function for Google signin
+  Future<dynamic> signIn(BuildContext context) async {
+    final user = await GoogleSignInApi.login();
+    if (user == null) {
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Sign in Failed')));
+    } else {
+      PageNavigator(ctx: context).nextPage(page: const HomeScreen());
+    }
   }
 }

@@ -9,6 +9,8 @@ import 'bottom_navBar.dart';
 import 'home_screen_body.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -28,8 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
       _selectedIndex = index;
     });
   }
-
-  late final GoogleSignInAccount user;
 
   @override
   Widget build(BuildContext context) {

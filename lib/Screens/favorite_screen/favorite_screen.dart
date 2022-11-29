@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gofarmng/Constants/size_config.dart';
 
 import '../../Widgets/search_textformfield.dart';
+import '../analytics_screen/analytics_screen.dart';
 import '../home_screen/app_bar.dart';
 import '../home_screen/app_drawer.dart';
 import 'fovorite_components.dart';

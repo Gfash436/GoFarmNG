@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import '../../Constants/size_config.dart';
 import '../../Widgets/myText.dart';
 import '../../Widgets/search_textformfield.dart';
+import '../analytics_screen/analytics_screen.dart';
 import 'newest_arrival.dart';
 import 'popular_categories.dart';
 import 'top_selling_products.dart';

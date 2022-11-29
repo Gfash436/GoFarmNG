@@ -10,7 +10,8 @@ import '../Authentication/loginPage.dart';
 
 class AppDrawer extends StatelessWidget {
   final GoogleSignInAccount? user;
-  const AppDrawer({Key? key, this.user}) : super(key: key);
+
+  AppDrawer({Key? key, this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,19 +21,13 @@ class AppDrawer extends StatelessWidget {
         child: Drawer(
           child: Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(
-                  20,
-                ),
-                vertical: getProportionateScreenHeight(
-                  56,
-                )),
+                horizontal: getProportionateScreenWidth(20),
+                vertical: getProportionateScreenHeight(56)),
             child: Column(
               children: [
-                Container(
-                  // height: getProportionateScreenHeight(141),
-                  width: getProportionateScreenHeight(100),
-                  child: Column(
-                    children: [
+                SizedBox(
+                    width: getProportionateScreenHeight(100),
+                    child: Column(children: [
                       CircleAvatar(
                         foregroundColor: Colors.white,
                         backgroundColor: Colors.white,
@@ -40,49 +35,62 @@ class AppDrawer extends StatelessWidget {
                         backgroundImage:
                             const AssetImage("assets/images/profilePix.png"),
                       ),
-                      SizedBox(
-                        height: getProportionateScreenHeight(
-                          8,
-                        ),
-                      ),
+                      SizedBox(height: getProportionateScreenHeight(8)),
                       myText(
-                        text: 'David',
-                        fontWeight: FontWeight.bold,
-                        fontSize: getProportionateScreenWidth(
-                          24,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: getProportionateScreenHeight(
-                    32,
-                  ),
-                ),
+                          text: 'David',
+                          fontWeight: FontWeight.bold,
+                          fontSize: getProportionateScreenWidth(24))
+                    ])),
+                SizedBox(height: getProportionateScreenHeight(32)),
                 Expanded(
-                  child: Column(
-                    children: [
-                      drawerButton(context, 'My Profile',
-                          'assets/icons/Myprofile.svg', () {}),
-                      drawerButton(context, 'Order History',
-                          'assets/icons/history.svg', () {}),
-                      drawerButton(context, 'Payment',
-                          'assets/icons/payment.svg', () {}),
-                      drawerButton(context, 'My Address',
-                          'assets/icons/location.svg', () {}),
-                      drawerButton(context, 'Settings',
-                          'assets/icons/settings.svg', () {}),
-                      drawerButton(
-                          context, 'Help', 'assets/icons/help.svg', () {}),
-                      drawerButton(context, 'Logout', 'assets/icons/logout.svg',
-                          () async {
-                        await GoogleSignInApi.logout();
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        drawerButton(context, 'My Profile',
+                            'assets/icons/Myprofile.svg', () {}),
+                        // Divider(
+                        //     thickness: .5,
+                        //     height: getProportionateScreenWidth(16)),
+                        drawerButton(context, 'Sell',
+                            'assets/icons/Myprofile.svg', () {}),
+                        Divider(
+                            thickness: .5,
+                            height: getProportionateScreenWidth(16)),
+                        drawerButton(context, 'Order History',
+                            'assets/icons/history.svg', () {}),
+                        Divider(
+                            thickness: .5,
+                            height: getProportionateScreenWidth(16)),
+                        drawerButton(context, 'Payment',
+                            'assets/icons/payment.svg', () {}),
+                        Divider(
+                            thickness: .5,
+                            height: getProportionateScreenWidth(16)),
+                        drawerButton(context, 'My Address',
+                            'assets/icons/location.svg', () {}),
+                        Divider(
+                            thickness: .5,
+                            height: getProportionateScreenWidth(16)),
+                        drawerButton(context, 'Settings',
+                            'assets/icons/settings.svg', () {}),
+                        Divider(
+                            thickness: .5,
+                            height: getProportionateScreenWidth(16)),
+                        drawerButton(
+                            context, 'Help', 'assets/icons/help.svg', () {}),
+                        Divider(
+                            thickness: .5,
+                            height: getProportionateScreenWidth(16)),
+                        drawerButton(
+                            context, 'Logout', 'assets/icons/logout.svg',
+                            () async {
+                          await GoogleSignInApi.logout();
 
-                        PageNavigator(ctx: context)
-                            .nextPageOnly(page: const LoginPage());
-                      }),
-                    ],
+                          PageNavigator(ctx: context)
+                              .nextPageOnly(page: const LoginPage());
+                        }),
+                      ],
+                    ),
                   ),
                 ),
               ],

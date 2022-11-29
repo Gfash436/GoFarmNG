@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gofarmng/Styles/colors.dart';
+import 'package:gofarmng/Styles/colors.dart';
 
 import '../Constants/size_config.dart';
 import 'image.dart';
@@ -71,7 +72,7 @@ Widget googleButton(
               color: status == false ? white : green,
               borderRadius: BorderRadius.circular(16),
               border: Border.all(color: grey)),
-          width: MediaQuery.of(context!).size.width,
+          width: double.infinity,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -88,35 +89,31 @@ Widget googleButton(
           )));
 }
 
-Column drawerButton(
+Widget drawerButton(
     BuildContext context, String title, String icon, VoidCallback tap) {
-  return Column(children: [
-    GestureDetector(
-      onTap: tap,
-      child: SizedBox(
-        child: Row(
-          children: [
-            SvgPicture.asset(
-              icon,
-              height: getProportionateScreenWidth(21),
-              width: getProportionateScreenWidth(21),
+  return SizedBox(
+    child: ElevatedButton(
+      style: ElevatedButton.styleFrom(backgroundColor: white),
+      onPressed: tap,
+      child: Row(
+        children: [
+          SvgPicture.asset(
+            icon,
+            height: getProportionateScreenWidth(21),
+            width: getProportionateScreenWidth(21),
+          ),
+          SizedBox(
+            width: getProportionateScreenWidth(
+              16,
             ),
-            SizedBox(
-              width: getProportionateScreenWidth(
-                16,
-              ),
-            ),
-            myText(
-              text: title,
-              fontSize: getProportionateScreenWidth(14),
-            ),
-          ],
-        ),
+          ),
+          myText(
+            text: title,
+            color: textColor,
+            fontSize: getProportionateScreenWidth(14),
+          ),
+        ],
       ),
     ),
-    Divider(
-      thickness: .5,
-      height: getProportionateScreenWidth(16),
-    ),
-  ]);
+  );
 }
