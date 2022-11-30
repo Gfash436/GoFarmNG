@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../Constants/size_config.dart';
 import '../../Styles/colors.dart';
 import '../../Widgets/addItemIcon_&_removeItemIcon.dart';
+import '../../Widgets/button.dart';
 import '../../Widgets/myText.dart';
 import '../favorite_screen/removeItemBtn.dart';
 import 'shipping_details.dart';
@@ -97,28 +98,12 @@ class CartComponents extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: getProportionateScreenHeight(24),
-                  ),
-                  SizedBox(
-                    height: getProportionateScreenHeight(55),
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => const ShippingDetails(),
-                        ),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        backgroundColor: green,
-                      ),
-                      child: myText(
-                        text: "Continue to checkout",
-                        fontSize: getProportionateScreenWidth(20),
-                        fontWeight: FontWeight.w700,
+                  customButton(
+                    height: 53,
+                    text: "Continue to checkout",
+                    tap: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const ShippingDetails(),
                       ),
                     ),
                   ),
@@ -298,28 +283,3 @@ class ContainerButton extends StatelessWidget {
     );
   }
 }
-
-
-
-
-//SnackBar Code
-// ScaffoldMessenger.of(context).showSnackBar(
-//           SnackBar(
-//             padding: EdgeInsets.zero,
-//             content: Container(
-//               height: getProportionateScreenHeight(200),
-//               width: getProportionateScreenWidth(double.infinity),
-//               decoration: BoxDecoration(
-//                 color: Colors.white,
-//                 boxShadow: [
-//                   BoxShadow(
-//                     color: const Color(0xff111111).withOpacity(.18),
-//                     offset: const Offset(0, 0),
-//                     blurRadius: 9,
-//                     spreadRadius: 0,
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//         );

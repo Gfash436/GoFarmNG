@@ -9,13 +9,15 @@ import 'myText.dart';
 Widget customButton(
     {VoidCallback? tap,
     bool? status = false,
+    double? height = 49,
     String? text = 'Sign Up',
     bool? isValid = false,
     BuildContext? context}) {
   return GestureDetector(
     onTap: status == true ? null : tap,
     child: Container(
-      height: 49,
+      height: height,
+      width: double.infinity,
       margin: const EdgeInsets.symmetric(
         vertical: 15,
       ),
@@ -23,7 +25,6 @@ Widget customButton(
       decoration: BoxDecoration(
           color: status == false ? green : grey,
           borderRadius: BorderRadius.circular(8)),
-      width: double.infinity,
       child: Text(
         status == false ? text! : 'Please wait...',
         style:

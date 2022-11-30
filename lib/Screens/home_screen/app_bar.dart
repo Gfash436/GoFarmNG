@@ -6,7 +6,7 @@ import '../notification_screen/notification_screen.dart';
 
 AppBar appBar(BuildContext context, final scafoldKey) {
   return AppBar(
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.transparent,
     elevation: 0,
     leading: IconButton(
       icon: SvgPicture.asset(

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Screens/analytics_screen/analytics_screen.dart';
 import 'package:gofarmng/Screens/favorite_screen/favorite_screen.dart';
-// import 'package:gofarmng/Screens/wallet_screen/wallet_screen.dart';
+import 'package:gofarmng/Screens/wallet_screen/wallet_screen.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'app_bar.dart';
@@ -27,12 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
     HomeScreenBody(),
     AnalyticsScreen(),
     const FavoriteScreen(),
+    const WalletScreen(),
     // Navigator.of(context as BuildContext).push(
     //   MaterialPageRoute(
     //     builder: (context) => const WalletScreen(),
     //   ),
     // ),
-    // const WalletScreen(),
   ];
   void navigatoTo(int index) {
     setState(() {
@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
     // final displayData = Provider.of<AuthenticationProvider>(context);
     SizeConfig.init(context);
     return Scaffold(
+      key: scafoldKey,
       appBar: appBar(context, scafoldKey),
       body: SafeArea(child: _pages[_selectedIndex]),
       bottomNavigationBar:
