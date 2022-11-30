@@ -6,6 +6,7 @@ import '../../Constants/size_config.dart';
 import '../../Provider/AuthProvider/fetchdata_provider.dart';
 import '../../Styles/colors.dart';
 import '../../Widgets/myText.dart';
+import 'categories.dart';
 
 class PopularCategories extends StatelessWidget {
   const PopularCategories({
@@ -14,35 +15,43 @@ class PopularCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AuthenticationProvider>(builder: (context, value, child) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              myText(
-                text: "Popular Categories",
-                fontSize: getProportionateScreenHeight(16),
-              ),
-              myText(
-                text: "View all",
-                fontSize: getProportionateScreenHeight(12),
-                color: green,
-              ),
-            ],
-          ),
-          SizedBox(
-            height: getProportionateScreenHeight(
-              8,
+    return Consumer<AuthenticationProvider>(
+      builder: (context, value, child) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                myText(
+                  text: "Popular Categories",
+                  fontSize: getProportionateScreenHeight(16),
+                ),
+                TextButton(
+                  onPressed: () => Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const ViewAllProducts(),
+                    ),
+                  ),
+                  child: myText(
+                    text: "View all",
+                    fontSize: getProportionateScreenHeight(12),
+                    color: green,
+                  ),
+                ),
+              ],
             ),
-          ),
-          Container(
-            color: Colors.white,
-            height: getProportionateScreenWidth(
-              72,
+            SizedBox(
+              height: getProportionateScreenHeight(
+                8,
+              ),
             ),
-            child: FutureBuilder(
+            Container(
+              color: Colors.white,
+              height: getProportionateScreenWidth(
+                72,
+              ),
+              child: FutureBuilder(
                 future: FetchDataProvider().fetchAllProducts(),
                 builder: (context, snapshot) {
                   return !snapshot.hasData && !snapshot.hasError
@@ -56,8 +65,8 @@ class PopularCategories extends StatelessWidget {
                               itemCount: snapshot.data!.data!.length,
                               separatorBuilder:
                                   (BuildContext context, int index) => SizedBox(
-                                        width: getProportionateScreenWidth(10),
-                                      ),
+                                width: getProportionateScreenWidth(10),
+                              ),
                               itemBuilder: (BuildContext context, int index) {
                                 // final apidata = snapshot.data;
                                 // print();
@@ -93,8 +102,7 @@ class PopularCategories extends StatelessWidget {
                                         height: getProportionateScreenHeight(8),
                                       ),
                                       myText(
-                                        text:
-                                            "${product.description}",
+                                        text: "${product.category}",
                                         color: const Color(0xff353535),
                                         fontSize:
                                             getProportionateScreenWidth(12),
@@ -103,11 +111,14 @@ class PopularCategories extends StatelessWidget {
                                     ],
                                   ),
                                 );
-                              });
-                }),
-          ),
-        ],
-      );
-    });
+                              },
+                            );
+                },
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 }

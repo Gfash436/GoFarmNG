@@ -11,15 +11,15 @@ import 'recent_orders/recent_orders.dart';
 
 class AnalyticsScreen extends StatelessWidget {
   AnalyticsScreen({super.key});
-  final scafoldKey = GlobalKey<ScaffoldState>();
+  // final scafoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
-      key: scafoldKey,
-      appBar: appBar(context, scafoldKey),
-      drawer: AppDrawer(),
+      // key: scafoldKey,
+      // appBar: appBar(context, scafoldKey),
+      drawer: const AppDrawer(),
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: getProportionateScreenHeight(20),

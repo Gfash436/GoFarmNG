@@ -14,6 +14,7 @@ class CartScreen extends StatefulWidget {
 
 class _CartScreenState extends State<CartScreen> {
   @override
+  final scafoldKey2 = GlobalKey<ScaffoldState>();
   void initState() {
     // showBottomSheet(context);
     super.initState();
@@ -21,8 +22,10 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // SizeConfig.init(context);
     return Scaffold(
       // backgroundColor: Colors.brown,
+      key: scafoldKey2,
       appBar: AppBar(
         backgroundColor: white,
         foregroundColor: black,
@@ -45,10 +48,7 @@ class _CartScreenState extends State<CartScreen> {
               const SizedBox(
                 height: 8,
               ),
-              ...List.generate(
-                8,
-                (index) => const CartComponents(),
-              ),
+              ...List.generate(8, (index) => const CartComponents()),
             ],
           ),
         ),
@@ -56,15 +56,3 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 }
-
-// showBottomSheet(BuildContext context) {
-//   showModalBottomSheet(
-//     context: context,
-//     builder: (BuildContext context) {
-//       return Container(
-//         height: 200,
-//         color: Colors.amber,
-//       );
-//     },
-//   );
-// }

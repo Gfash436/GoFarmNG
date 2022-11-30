@@ -4,140 +4,256 @@ import '../../Styles/colors.dart';
 import '../../Widgets/addItemIcon_&_removeItemIcon.dart';
 import '../../Widgets/myText.dart';
 import '../favorite_screen/removeItemBtn.dart';
+import 'shipping_details.dart';
 
 class CartComponents extends StatelessWidget {
   const CartComponents({
     super.key,
+    //  required this.onTap,
     // required this.icon,
   });
-
+  // final GestureTapCallback onTap;
   // final String icon;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(
-        getProportionateScreenWidth(
-          16,
-        ),
-      ),
-      margin: EdgeInsets.symmetric(
-        vertical: getProportionateScreenHeight(8),
-      ),
-      decoration: BoxDecoration(
-        // color: Colors.brown,
-        borderRadius: BorderRadius.circular(
-          8,
-        ),
-        border: Border.all(
-          color: grey,
-          width: .5,
-          strokeAlign: BorderSide.strokeAlignInside,
-          style: BorderStyle.solid,
-        ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        // crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                margin: EdgeInsets.only(
-                  right: getProportionateScreenWidth(
-                    16,
-                  ),
+    return GestureDetector(
+      onTap: () {
+        Scaffold.of(context).showBottomSheet(
+          (context) => Container(
+            height: getProportionateScreenHeight(213),
+            width: getProportionateScreenWidth(double.infinity),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  color: const Color(0xff111111).withOpacity(.18),
+                  offset: const Offset(0, 0),
+                  blurRadius: 9,
+                  spreadRadius: 0,
                 ),
-                height: getProportionateScreenWidth(55),
-                width: getProportionateScreenWidth(55),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    8,
-                  ),
-                ),
-                child: Image.asset("assets/images/apple.png"),
+              ],
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: getProportionateScreenWidth(20),
+                vertical: getProportionateScreenHeight(16),
               ),
-              SizedBox(
-                height: getProportionateScreenWidth(43),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    myText(
-                      text: "Farm fresh apple",
-                      fontSize: getProportionateScreenWidth(
-                        14,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      myText(
+                        text: "Subtotal",
+                        fontSize: getProportionateScreenWidth(12),
+                        fontWeight: FontWeight.w400,
                       ),
-                      fontWeight: FontWeight.bold,
-                    ),
-                    const Spacer(),
-                    Text.rich(
-                      TextSpan(
-                          text: "N1000",
-                          style: TextStyle(
-                            fontSize: getProportionateScreenWidth(
-                              12,
-                            ),
-                            color: const Color(0xff353535),
-                            fontWeight: FontWeight.normal,
-                          ),
-                          children: [
-                            TextSpan(
-                              text: "/Pcs",
-                              style: TextStyle(
-                                fontSize: getProportionateScreenWidth(
-                                  9,
-                                ),
-                                color: const Color(0xff353535),
-                                fontWeight: FontWeight.normal,
-                              ),
-                            ),
-                          ]),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: getProportionateScreenWidth(24),
-                width: getProportionateScreenWidth(74),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    ContainerRemoveItemIcon(
-                      ontap: () {},
-                    ),
-                    Expanded(
+                      myText(
+                        text: "N18,000",
+                        fontSize: getProportionateScreenWidth(12),
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: getProportionateScreenHeight(8),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      myText(
+                        text: "Shipping",
+                        fontSize: getProportionateScreenWidth(12),
+                        fontWeight: FontWeight.w400,
+                      ),
+                      myText(
+                        text: "N2000",
+                        fontSize: getProportionateScreenWidth(12),
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: getProportionateScreenHeight(8),
+                  ),
+                  const Divider(
+                    thickness: .5,
+                  ),
+                  SizedBox(
+                    height: getProportionateScreenHeight(8),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      myText(
+                        text: "Total",
+                        fontSize: getProportionateScreenWidth(12),
+                        fontWeight: FontWeight.w700,
+                      ),
+                      myText(
+                        text: "N2000",
+                        fontSize: getProportionateScreenWidth(12),
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: getProportionateScreenHeight(24),
+                  ),
+                  SizedBox(
+                    height: getProportionateScreenHeight(55),
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const ShippingDetails(),
+                        ),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        backgroundColor: green,
+                      ),
                       child: myText(
-                        text: "1",textAlign: TextAlign.center,
+                        text: "Continue to checkout",
+                        fontSize: getProportionateScreenWidth(20),
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+      child: Container(
+        padding: EdgeInsets.all(
+          getProportionateScreenWidth(
+            16,
+          ),
+        ),
+        margin: EdgeInsets.symmetric(
+          vertical: getProportionateScreenHeight(8),
+        ),
+        decoration: BoxDecoration(
+          // color: Colors.brown,
+          borderRadius: BorderRadius.circular(
+            8,
+          ),
+          border: Border.all(
+            color: grey,
+            width: .5,
+            strokeAlign: BorderSide.strokeAlignInside,
+            style: BorderStyle.solid,
+          ),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                    right: getProportionateScreenWidth(
+                      16,
+                    ),
+                  ),
+                  height: getProportionateScreenWidth(55),
+                  width: getProportionateScreenWidth(55),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                      8,
+                    ),
+                  ),
+                  child: Image.asset("assets/images/apple.png"),
+                ),
+                SizedBox(
+                  height: getProportionateScreenWidth(43),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      myText(
+                        text: "Farm fresh apple",
                         fontSize: getProportionateScreenWidth(
-                          16,
+                          14,
                         ),
                         fontWeight: FontWeight.bold,
                       ),
-                    ),
-                    ContainerAddItemIcon(
-                      ontap: () {},
-                    ),
-                  ],
+                      const Spacer(),
+                      Text.rich(
+                        TextSpan(
+                            text: "N1000",
+                            style: TextStyle(
+                              fontSize: getProportionateScreenWidth(
+                                12,
+                              ),
+                              color: const Color(0xff353535),
+                              fontWeight: FontWeight.normal,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: "/Pcs",
+                                style: TextStyle(
+                                  fontSize: getProportionateScreenWidth(
+                                    9,
+                                  ),
+                                  color: const Color(0xff353535),
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                            ]),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: getProportionateScreenHeight(
-                  8,
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: getProportionateScreenWidth(24),
+                  width: getProportionateScreenWidth(74),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ContainerRemoveItemIcon(
+                        ontap: () {},
+                      ),
+                      Expanded(
+                        child: myText(
+                          text: "1",
+                          textAlign: TextAlign.center,
+                          fontSize: getProportionateScreenWidth(
+                            16,
+                          ),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      ContainerAddItemIcon(
+                        ontap: () {},
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              RemoveItemBtn(
-                ontap: () {},
-              ),
-            ],
-          ),
-        ],
+                SizedBox(
+                  height: getProportionateScreenHeight(
+                    8,
+                  ),
+                ),
+                RemoveItemBtn(
+                  ontap: () {},
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -182,3 +298,28 @@ class ContainerButton extends StatelessWidget {
     );
   }
 }
+
+
+
+
+//SnackBar Code
+// ScaffoldMessenger.of(context).showSnackBar(
+//           SnackBar(
+//             padding: EdgeInsets.zero,
+//             content: Container(
+//               height: getProportionateScreenHeight(200),
+//               width: getProportionateScreenWidth(double.infinity),
+//               decoration: BoxDecoration(
+//                 color: Colors.white,
+//                 boxShadow: [
+//                   BoxShadow(
+//                     color: const Color(0xff111111).withOpacity(.18),
+//                     offset: const Offset(0, 0),
+//                     blurRadius: 9,
+//                     spreadRadius: 0,
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         );

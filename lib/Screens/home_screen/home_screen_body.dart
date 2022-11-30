@@ -20,12 +20,10 @@ class HomeScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: scafoldKey,
-      appBar: appBar(context, scafoldKey),
-      drawer: AppDrawer(),
+      // key: scafoldKey,
+      // appBar: appBar(context, scafoldKey),
+      drawer: const AppDrawer(),
       body: Consumer<AuthenticationProvider>(builder: (_, data, __) {
-        // final data = Provider.of<AuthenticationProvider>(context);
-        // .fetchAllProducts();
         return SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
