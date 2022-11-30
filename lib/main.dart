@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gofarmng/Screens/Authentication/loginPage.dart';
+import 'package:gofarmng/Screens/home_screen/home_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'Screens/analytics_screen/analytics_screen.dart';
 import 'Provider/AuthProvider/authProvider.dart';
 import 'Screens/splashScreen.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Nunito',
           primarySwatch: Colors.blue,
         ),
-        home: const LoginPage(),
+        home: const HomeScreen(),
       ),
     );
   }
