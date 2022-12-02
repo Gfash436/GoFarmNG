@@ -18,8 +18,6 @@ class HomeScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: scafoldKey,
-      // appBar: appBar(context, scafoldKey),
       body: Consumer<AuthenticationProvider>(builder: (_, data, __) {
         return SingleChildScrollView(
           child: Padding(
@@ -42,11 +40,7 @@ class HomeScreenBody extends StatelessWidget {
                 SizedBox(
                   height: getProportionateScreenHeight(28),
                 ),
-                // const PopularCategories(),
-                // const PopularCategories(),
                 const PopularCategories(),
-                // const BalanceDetails(),
-                // const PopularCategories(),
                 SizedBox(
                   height: getProportionateScreenHeight(16),
                 ),
