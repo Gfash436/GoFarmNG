@@ -5,7 +5,6 @@ import 'package:gofarmng/Screens/Authentication/loginPage.dart';
 import 'package:gofarmng/Screens/Authentication/signUpPage.dart';
 
 import '../../Styles/colors.dart';
-import '../../Utilities/routers.dart';
 import '../../Widgets/button.dart';
 import '../../Widgets/image.dart';
 import '../../Widgets/myText.dart';
@@ -55,25 +54,28 @@ class _LoginState extends State<Login> {
                 )),
                 SizedBox(height: getProportionateScreenHeight(80)),
                 customButton2(
-                    status: false,
                     context: context,
                     text: 'Sign In',
                     tap: () {
-                      PageNavigator(ctx: context).nextPage(page: LoginPage());
-                      // Navigator.push(
-                      //     context,
-                      //     CupertinoPageRoute(
-                      //         builder: ((context) => LoginPage())));
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                          builder: ((context) => LoginPage()),
+                        ),
+                      );
                     }),
                 customButton(
-                    context: context,
-                    text: 'Sign Up',
-                    tap: () {
-                      Navigator.push(
-                          context,
-                          CupertinoPageRoute(
-                              builder: ((context) => const SignUpPage())));
-                    })
+                  context: context,
+                  text: 'Sign Up',
+                  tap: () {
+                    Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: ((context) => const SignUpPage()),
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
           ),

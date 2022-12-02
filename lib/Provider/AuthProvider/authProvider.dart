@@ -15,6 +15,7 @@ import '../../Constants/google_sign_in.dart';
 import '../../Screens/Authentication/loginPage.dart';
 import '../../Screens/Authentication/newPassword.dart';
 import '../../Screens/home_screen/home_screen.dart';
+import '../../models/products.dart';
 
 class AuthenticationProvider extends ChangeNotifier {
   //Base Url

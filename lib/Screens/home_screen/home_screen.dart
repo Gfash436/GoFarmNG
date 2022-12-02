@@ -19,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // final TextEditingController searchController = TextEditingController();
   int _selectedIndex = 0;
   // final scafoldKey = GlobalKey<ScaffoldState>();
+  
   static final List<Widget> _pages = [
     HomeScreenBody(),
     AnalyticsScreen(),
@@ -33,12 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // final displayData = Provider.of<AuthenticationProvider>(context);
     SizeConfig.init(context);
     return Scaffold(
-      // key: scafoldKey,
-      // backgroundColor: Colors.brown,
-      // backgroundColor: Colors.white,
-      // drawer: AppDrawer(),
       body: SafeArea(child: _pages[_selectedIndex]),
       bottomNavigationBar:
           NavBar(navigatoTo: navigatoTo, selectedIndex: _selectedIndex),
