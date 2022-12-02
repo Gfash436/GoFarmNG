@@ -92,27 +92,27 @@ Widget googleButton(
 Widget drawerButton(
     BuildContext context, String title, String icon, VoidCallback tap) {
   return SizedBox(
-    child: ElevatedButton(
-      style: ElevatedButton.styleFrom(backgroundColor: white),
-      onPressed: tap,
-      child: Row(
-        children: [
-          SvgPicture.asset(
-            icon,
-            height: getProportionateScreenWidth(21),
-            width: getProportionateScreenWidth(21),
-          ),
-          SizedBox(
-            width: getProportionateScreenWidth(
-              16,
+    height: getProportionateScreenHeight(40),
+    child: SizedBox(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+        child: Row(
+          children: [
+            SvgPicture.asset(
+              icon,
+              height: getProportionateScreenWidth(21),
+              width: getProportionateScreenWidth(21),
             ),
-          ),
-          myText(
-            text: title,
-            color: textColor,
-            fontSize: getProportionateScreenWidth(14),
-          ),
-        ],
+            SizedBox(
+              width: getProportionateScreenWidth(16),
+            ),
+            myText(
+              text: title,
+              color: textColor,
+              fontSize: getProportionateScreenWidth(14),
+            ),
+          ],
+        ),
       ),
     ),
   );

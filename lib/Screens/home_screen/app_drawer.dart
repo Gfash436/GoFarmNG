@@ -49,9 +49,9 @@ class AppDrawer extends StatelessWidget {
                       children: [
                         drawerButton(context, 'My Profile',
                             'assets/icons/Myprofile.svg', () {}),
-                        // Divider(
-                        //     thickness: .5,
-                        //     height: getProportionateScreenWidth(16)),
+                        Divider(
+                            thickness: .5,
+                            height: getProportionateScreenWidth(16)),
                         drawerButton(context, 'Sell',
                             'assets/icons/Myprofile.svg', () {}),
                         Divider(
