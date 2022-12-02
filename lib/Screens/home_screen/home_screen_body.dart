@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gofarmng/Provider/AuthProvider/authProvider.dart';
-import 'package:gofarmng/Screens/home_screen/app_bar.dart';
-import 'package:gofarmng/Screens/home_screen/app_drawer.dart';
 import 'package:provider/provider.dart';
 
 import '../../Constants/size_config.dart';
@@ -22,7 +20,6 @@ class HomeScreenBody extends StatelessWidget {
     return Scaffold(
       // key: scafoldKey,
       // appBar: appBar(context, scafoldKey),
-      drawer: const AppDrawer(),
       body: Consumer<AuthenticationProvider>(builder: (_, data, __) {
         return SingleChildScrollView(
           child: Padding(

@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:gofarmng/Screens/cart_screen/cart_screen.dart';
 import 'package:gofarmng/Widgets/myText.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../Constants/google_sign_in.dart';
 import '../../Constants/size_config.dart';
 import '../../Utilities/routers.dart';
-import '../../Widgets/button.dart';
 import '../Authentication/loginPage.dart';
 
 class AppDrawer extends StatelessWidget {
   final GoogleSignInAccount? user;
-  const AppDrawer({Key? key, this.user}) : super(key: key);
+  const AppDrawer({
+    super.key,
+    this.user,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +50,7 @@ class AppDrawer extends StatelessWidget {
                         ),
                       ),
                       myText(
-                        text: 'David',
+                        text: "David",
                         fontWeight: FontWeight.bold,
                         fontSize: getProportionateScreenWidth(
                           24,
@@ -61,28 +65,38 @@ class AppDrawer extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: Column(
-                    children: [
-                      drawerButton(context, 'My Profile',
-                          'assets/icons/Myprofile.svg', () {}),
-                      drawerButton(context, 'Order History',
-                          'assets/icons/history.svg', () {}),
-                      drawerButton(context, 'Payment',
-                          'assets/icons/payment.svg', () {}),
-                      drawerButton(context, 'My Address',
-                          'assets/icons/location.svg', () {}),
-                      drawerButton(context, 'Settings',
-                          'assets/icons/settings.svg', () {}),
-                      drawerButton(
-                          context, 'Help', 'assets/icons/help.svg', () {}),
-                      drawerButton(context, 'Logout', 'assets/icons/logout.svg',
-                          () async {
-                        await GoogleSignInApi.logout();
-
-                        PageNavigator(ctx: context)
-                            .nextPageOnly(page: const LoginPage());
-                      }),
-                    ],
+                  // height: getProportionateScreenHeight(360),
+                  child: ListView.separated(
+                    itemCount: getList(context).length,
+                    separatorBuilder: (context, index) => Divider(
+                      thickness: .5,
+                      height: getProportionateScreenWidth(16),
+                    ),
+                    itemBuilder: (context, index) => InkWell(
+                      onTap: getList(context)[index]["onTap"],
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: getProportionateScreenWidth(6)),
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(
+                              "${getList(context)[index]["icon"]}",
+                              height: getProportionateScreenWidth(21),
+                              width: getProportionateScreenWidth(21),
+                            ),
+                            SizedBox(
+                              width: getProportionateScreenWidth(
+                                16,
+                              ),
+                            ),
+                            myText(
+                              text: "${getList(context)[index]["title"]}",
+                              fontSize: getProportionateScreenWidth(14),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -91,5 +105,66 @@ class AppDrawer extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  List<Map<String, dynamic>> getList(BuildContext context) {
+    return [
+      {
+        "icon": "assets/icons/Myprofile.svg",
+        "title": "My Profile",
+        "onTap": () {}
+      },
+      {
+        "icon": "assets/icons/Myprofile.svg",
+        "title": "Sell",
+        "onTap": () {},
+      },
+      {
+        "icon": "assets/icons/history.svg",
+        "title": "Order History",
+        "onTap": () {}
+      },
+      {
+        "icon": "assets/icons/payment.svg",
+        "title": "Payment",
+        "onTap": () {},
+      },
+      {
+        "icon": "assets/icons/location.svg",
+        "title": "My Address",
+        "onTap": () {}
+      },
+      {
+        "icon": "assets/icons/track_order.svg",
+        "title": "Track Order",
+        "onTap": () {}
+      },
+      {
+        "icon": "assets/icons/settings.svg",
+        "title": "Settings",
+        "onTap": () {}
+      },
+      {
+        "icon": "assets/icons/help.svg",
+        "title": "Help",
+        "onTap": () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const CartScreen(),
+            ),
+          );
+        }
+      },
+      {
+        "icon": "assets/icons/logout.svg",
+        "title": "Logout",
+        "onTap": () async {
+          await GoogleSignInApi.logout();
+          PageNavigator(ctx: context).nextPageOnly(
+            page: const LoginPage(),
+          );
+        }
+      },
+    ];
   }
 }

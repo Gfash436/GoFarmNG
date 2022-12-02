@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../cart_screen/cart_screen.dart';
 import '../notification_screen/notification_screen.dart';
 
-AppBar appBar(BuildContext context, final scafoldKey) {
+AppBar appBar(BuildContext context, GlobalKey<ScaffoldState>key) {
   return AppBar(
     backgroundColor: Colors.transparent,
     elevation: 0,
@@ -12,7 +12,7 @@ AppBar appBar(BuildContext context, final scafoldKey) {
       icon: SvgPicture.asset(
         "assets/icons/menu.svg",
       ),
-      onPressed: () => scafoldKey.currentState!.openDrawer(),
+      onPressed: () => key.currentState!.openDrawer(),
     ),
     actions: [
       // IconButton(

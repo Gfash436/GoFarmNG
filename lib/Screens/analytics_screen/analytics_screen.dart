@@ -10,7 +10,7 @@ import 'pie_chart/pie_chart.dart';
 import 'recent_orders/recent_orders.dart';
 
 class AnalyticsScreen extends StatelessWidget {
-  AnalyticsScreen({super.key});
+  const AnalyticsScreen({super.key});
   // final scafoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -19,7 +19,7 @@ class AnalyticsScreen extends StatelessWidget {
     return Scaffold(
       // key: scafoldKey,
       // appBar: appBar(context, scafoldKey),
-      drawer: const AppDrawer(),
+      // drawer: const AppDrawer(),
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: getProportionateScreenHeight(20),
