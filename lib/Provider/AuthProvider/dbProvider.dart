@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Screens/Authentication/loginPage.dart';
+import '../../Utilities/routers.dart';
+
 class DatabaseProvider extends ChangeNotifier {
   final Future<SharedPreferences> _ref = SharedPreferences.getInstance();
 
@@ -79,6 +82,6 @@ class DatabaseProvider extends ChangeNotifier {
     final value = await _ref;
 
     value.clear();
-    Navigator.pushReplacementNamed(context, 'Login');
+    PageNavigator(ctx: context).nextPageOnly(page: const LoginPage());
   }
 }

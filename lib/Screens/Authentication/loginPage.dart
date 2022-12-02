@@ -97,6 +97,10 @@ class _LoginPageState extends State<LoginPage> {
                                         const ForgotPassword()));
                           },
                           child: myText(
+                              pressed: () {
+                                PageNavigator(ctx: context)
+                                    .nextPage(page: const ForgotPassword());
+                              },
                               text: 'Forgot Password',
                               color: green,
                               fontSize: 13,
@@ -167,7 +171,7 @@ class _LoginPageState extends State<LoginPage> {
                   });
                   return googleButton(
                     tap: (() {
-                      auth.signIn(context);
+                      // auth.signIn(context);
                     }),
                   );
                 }),

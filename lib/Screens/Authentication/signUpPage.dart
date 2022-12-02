@@ -251,7 +251,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                         const SizedBox(height: 16),
-                        googleButton(tap: signUp, context: context),
+                        googleButton(
+                          // tap: signUp, context: context,
+                          ),
                         const SizedBox(height: 8),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,

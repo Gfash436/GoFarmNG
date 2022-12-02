@@ -4,6 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../Constants/google_sign_in.dart';
 import '../../Constants/size_config.dart';
+import '../../Provider/AuthProvider/dbProvider.dart';
 import '../../Utilities/routers.dart';
 import '../../Widgets/button.dart';
 import '../Authentication/loginPage.dart';
@@ -82,9 +83,8 @@ class AppDrawer extends StatelessWidget {
                             thickness: .5,
                             height: getProportionateScreenWidth(16)),
                         drawerButton(
-                            context, 'Logout', 'assets/icons/logout.svg',
-                            () async {
-                          await GoogleSignInApi.logout();
+                            context, 'Logout', 'assets/icons/logout.svg', () {
+                          DatabaseProvider().logOut(context);
 
                           PageNavigator(ctx: context)
                               .nextPageOnly(page: const LoginPage());
