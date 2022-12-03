@@ -4,6 +4,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import '../../models/products.dart';
 import 'dbProvider.dart';
+import '../../Constants/url.dart';
+
+//Base Url
+final requestBaseUrl = ApiUrl.baseUrl;
 
 class FetchDataProvider extends ChangeNotifier {
   Future<AllProducts> fetchAllProducts() async {

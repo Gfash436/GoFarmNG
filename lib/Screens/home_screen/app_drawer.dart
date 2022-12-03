@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../Constants/google_sign_in.dart';
 import '../../Constants/size_config.dart';
+import '../../Provider/AuthProvider/dbProvider.dart';
 import '../../Utilities/routers.dart';
 import '../Authentication/loginPage.dart';
 
@@ -24,19 +25,13 @@ class AppDrawer extends StatelessWidget {
         child: Drawer(
           child: Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(
-                  20,
-                ),
-                vertical: getProportionateScreenHeight(
-                  56,
-                )),
+                horizontal: getProportionateScreenWidth(20),
+                vertical: getProportionateScreenHeight(56)),
             child: Column(
               children: [
-                Container(
-                  // height: getProportionateScreenHeight(141),
-                  width: getProportionateScreenHeight(100),
-                  child: Column(
-                    children: [
+                SizedBox(
+                    width: getProportionateScreenHeight(100),
+                    child: Column(children: [
                       CircleAvatar(
                         foregroundColor: Colors.white,
                         backgroundColor: Colors.white,
@@ -44,11 +39,7 @@ class AppDrawer extends StatelessWidget {
                         backgroundImage:
                             const AssetImage("assets/images/profilePix.png"),
                       ),
-                      SizedBox(
-                        height: getProportionateScreenHeight(
-                          8,
-                        ),
-                      ),
+                      SizedBox(height: getProportionateScreenHeight(8)),
                       myText(
                         text: "David",
                         fontWeight: FontWeight.bold,

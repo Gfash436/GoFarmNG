@@ -9,6 +9,7 @@ class myText extends StatelessWidget {
   final FontWeight? fontWeight;
   final Color? color;
   final TextAlign? textAlign;
+  final VoidCallback? pressed;
 
   const myText(
       {super.key,
@@ -16,18 +17,21 @@ class myText extends StatelessWidget {
       this.fontSize,
       this.fontWeight,
       this.color,
-      this.textAlign});
+      this.textAlign,
+      this.pressed});
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      textAlign: textAlign,
-      style: TextStyle(
-        color: color,
-        fontWeight: fontWeight,
-        fontSize: fontSize,
-      ),
-    );
+    return TextButton(
+        onPressed: pressed,
+        child: Text(
+          text,
+          textAlign: textAlign,
+          style: TextStyle(
+            color: color,
+            fontWeight: fontWeight,
+            fontSize: fontSize,
+          ),
+        ));
   }
 }

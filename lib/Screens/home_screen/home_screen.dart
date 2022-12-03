@@ -43,8 +43,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  late final GoogleSignInAccount user;
-
   @override
   Widget build(BuildContext context) {
     // final displayData = Provider.of<AuthenticationProvider>(context);
