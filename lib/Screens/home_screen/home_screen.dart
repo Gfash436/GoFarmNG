@@ -24,19 +24,15 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   final scafoldKey = GlobalKey<ScaffoldState>();
 
-  List<dynamic> _pages (BuildContext context){
-    return[
-    HomeScreenBody(),
-    const AnalyticsScreen(),
-    const FavoriteScreen(),
-    const WalletScreen(),
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => const WalletScreen(),
-      ),
-    ),
+  List<dynamic> _pages(BuildContext context) {
+    return [
+      HomeScreenBody(),
+      const AnalyticsScreen(),
+      const FavoriteScreen(),
+      const WalletScreen(),
+    ];
+  }
 
-  ];}
   void navigatoTo(int index) {
     setState(() {
       _selectedIndex = index;
