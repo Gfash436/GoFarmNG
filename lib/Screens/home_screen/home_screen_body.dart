@@ -22,7 +22,7 @@ class HomeScreenBody extends StatelessWidget {
     return Scaffold(
       // key: scafoldKey,
       // appBar: appBar(context, scafoldKey),
-      drawer: const AppDrawer(),
+      // drawer: const AppDrawer(),
       body: Consumer<AuthenticationProvider>(builder: (_, data, __) {
         return SingleChildScrollView(
           child: Padding(

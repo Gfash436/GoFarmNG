@@ -8,6 +8,7 @@ import 'package:gofarmng/Screens/wallet_screen/wallet_screen.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'app_bar.dart';
+import 'app_drawer.dart';
 import 'bottom_navBar.dart';
 import 'home_screen_body.dart';
 
@@ -49,6 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       key: scafoldKey,
       appBar: appBar(context, scafoldKey),
+      drawer: AppDrawer(),
       body: SafeArea(child: _pages[_selectedIndex]),
       bottomNavigationBar:
           NavBar(navigatoTo: navigatoTo, selectedIndex: _selectedIndex),

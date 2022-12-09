@@ -15,7 +15,7 @@ class FavoriteScreen extends StatelessWidget {
     return Scaffold(
       // key: scafoldKey,
       // appBar: appBar(context, scafoldKey),
-      drawer: const AppDrawer(),
+      // drawer: const AppDrawer(),
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: getProportionateScreenWidth(16),
