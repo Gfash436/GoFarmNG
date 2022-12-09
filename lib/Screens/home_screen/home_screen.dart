@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   final scafoldKey = GlobalKey<ScaffoldState>();
   static final List<Widget> _pages = [
-    const HomeScreenBody(),
+    HomeScreenBody(),
     const AnalyticsScreen(),
     const FavoriteScreen(),
     const WalletScreen(),
