@@ -5,7 +5,7 @@ import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Provider/AuthProvider/authProvider.dart';
 import 'package:gofarmng/Provider/AuthProvider/dbProvider.dart';
 import 'package:gofarmng/Screens/Authentication/forgotPassword.dart';
-import 'package:gofarmng/Screens/home_screen/app_drawer.dart';
+import 'package:gofarmng/Screens/home_screen/app_drawer/app_drawer.dart';
 import 'package:gofarmng/Utilities/snack_messages.dart';
 import 'package:gofarmng/Widgets/textField.dart';
 import 'package:provider/provider.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Screens/home_screen/app_bar.dart';
-import 'package:gofarmng/Screens/home_screen/app_drawer.dart';
+import 'package:gofarmng/Screens/home_screen/app_drawer/app_drawer.dart';
 
 import '../../Styles/colors.dart';
 import 'balances/balance_details.dart';
