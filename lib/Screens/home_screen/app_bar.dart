@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../cart_screen/cart_screen.dart';
+import '../notification_screen/notification_screen.dart';
 
 AppBar appBar(BuildContext context, final scafoldKey) {
   return AppBar(
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.transparent,
     elevation: 0,
     leading: IconButton(
       icon: SvgPicture.asset(
@@ -14,11 +15,23 @@ AppBar appBar(BuildContext context, final scafoldKey) {
       onPressed: () => scafoldKey.currentState!.openDrawer(),
     ),
     actions: [
+      // IconButton(
+      //   icon: SvgPicture.asset(
+      //     "assets/icons/notification.svg",
+      //   ),
+      //   onPressed: (){},
+      // ),
       IconButton(
         icon: SvgPicture.asset(
           "assets/icons/notification.svg",
         ),
-        onPressed: (){},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const NotificationScreen(),
+            ),
+          );
+        },
       ),
       IconButton(
         icon: SvgPicture.asset(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Screens/home_screen/app_bar.dart';
-import 'package:gofarmng/Screens/home_screen/app_drawer.dart';
+import 'package:gofarmng/Screens/home_screen/app_drawer/app_drawer.dart';
 
 import '../../Styles/colors.dart';
 import 'balances/balance_details.dart';
@@ -11,15 +11,15 @@ import 'recent_orders/recent_orders.dart';
 
 class AnalyticsScreen extends StatelessWidget {
   AnalyticsScreen({super.key});
-  final scafoldKey = GlobalKey<ScaffoldState>();
+  // final scafoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
-      key: scafoldKey,
-      appBar: appBar(context, scafoldKey),
-      drawer: AppDrawer(),
+      // key: scafoldKey,
+      // appBar: appBar(context, scafoldKey),
+      // drawer: const AppDrawer(),
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: getProportionateScreenHeight(20),

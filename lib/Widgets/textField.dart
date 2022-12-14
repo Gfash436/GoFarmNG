@@ -41,7 +41,7 @@ Widget customTextField(
               hintStyle: TextStyle(color: grey),
               border: InputBorder.none),
         ),
-      )
+      ),
     ],
   );
 }
@@ -93,19 +93,20 @@ class _passwordTextFieldState extends State<passwordTextField> {
             obscureText: _visible,
             controller: widget.controller,
             decoration: InputDecoration(
-                hintText: widget.hint,
-                hintStyle: TextStyle(color: grey),
-                border: InputBorder.none,
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      _visible = !_visible;
-                    });
-                  },
-                  icon: _visible
-                      ? Icon(Icons.visibility, color: grey)
-                      : Icon(Icons.visibility_off, color: grey),
-                )),
+              hintText: widget.hint,
+              hintStyle: TextStyle(color: grey),
+              border: InputBorder.none,
+              suffixIcon: IconButton(
+                onPressed: () {
+                  setState(() {
+                    _visible = !_visible;
+                  });
+                },
+                icon: _visible
+                    ? Icon(Icons.visibility, color: grey)
+                    : Icon(Icons.visibility_off, color: grey),
+              ),
+            ),
           ),
         )
       ],
