@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:gofarmng/Provider/AuthProvider/logoutProvider.dart';
 import 'package:gofarmng/Widgets/myText.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 
-import '../../Constants/google_sign_in.dart';
 import '../../Constants/size_config.dart';
 import '../../Provider/AuthProvider/dbProvider.dart';
 import '../../Utilities/routers.dart';
@@ -10,9 +11,7 @@ import '../../Widgets/button.dart';
 import '../Authentication/loginPage.dart';
 
 class AppDrawer extends StatelessWidget {
-  final GoogleSignInAccount? user;
-
-  AppDrawer({Key? key, this.user}) : super(key: key);
+  const AppDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -84,10 +83,9 @@ class AppDrawer extends StatelessWidget {
                             height: getProportionateScreenWidth(16)),
                         drawerButton(
                             context, 'Logout', 'assets/icons/logout.svg', () {
-                          DatabaseProvider().logOut(context);
-
-                          PageNavigator(ctx: context)
-                              .nextPageOnly(page: const LoginPage());
+                          context
+                              .read<LogoutProvider>()
+                              .logOut();
                         }),
                       ],
                     ),

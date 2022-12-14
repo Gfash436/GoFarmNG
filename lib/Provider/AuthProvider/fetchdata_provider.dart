@@ -12,7 +12,6 @@ final requestBaseUrl = ApiUrl.baseUrl;
 class FetchDataProvider extends ChangeNotifier {
   Future<AllProducts> fetchAllProducts() async {
     String url = "$requestBaseUrl/api/v1/findall";
-    // const String url = "https://gofarmng.herokuapp.com/api/v1/findall?page=1&limit=5";
     String accessToken = await DatabaseProvider().getToken();
     print("This is the gotten token: $accessToken");
     final headers = {
