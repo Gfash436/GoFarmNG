@@ -7,7 +7,7 @@ import 'package:gofarmng/Widgets/myText.dart';
 
 import '../../Widgets/search_textformfield.dart';
 import 'app_bar.dart';
-import 'app_drawer.dart';
+import 'app_drawer/app_drawer.dart';
 import 'bottom_navBar.dart';
 import 'home_screen_body.dart';
 import 'newest_arrival.dart';
@@ -42,11 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
     SizeConfig.init(context);
     return Scaffold(
       key: scafoldKey,
-      // backgroundColor: Colors.brown,
-      // backgroundColor: Colors.white,
-      appBar: appBar(context,scafoldKey),
-      drawer: const AppDrawer(),
-      body: _pages[_selectedIndex],
+      appBar: appBar(context, scafoldKey),
+      drawer: AppDrawer(),
+      body: SafeArea(child: _pages[_selectedIndex]),
       bottomNavigationBar:
           NavBar(navigatoTo: navigatoTo, selectedIndex: _selectedIndex),
     );
