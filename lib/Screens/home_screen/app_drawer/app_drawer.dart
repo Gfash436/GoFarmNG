@@ -4,6 +4,7 @@ import 'package:gofarmng/Screens/wallet_screen/wallet_screen.dart';
 import 'package:gofarmng/Widgets/myText.dart';
 
 import '../../../Constants/size_config.dart';
+import '../../cart_screen/payment_details.dart';
 import 'my_address.dart';
 import 'order_history.dart';
 
@@ -38,7 +39,14 @@ class AppDrawer extends StatelessWidget {
       {
         "icon": "assets/icons/payment.svg",
         "title": "Payment",
-        "onTap": () {},
+        "onTap": () {
+          Navigator.of(context).pop();
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const PaymentDetails(),
+            ),
+          );
+        },
       },
       {
         "icon": "assets/icons/location.svg",
