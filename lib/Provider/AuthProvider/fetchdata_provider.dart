@@ -13,7 +13,7 @@ class FetchDataProvider extends ChangeNotifier {
   Future<AllProducts> fetchAllProducts() async {
     String url = "$requestBaseUrl/api/v1/findall";
     String accessToken = await DatabaseProvider().getToken();
-    print("This is the gotten token: $accessToken");
+    // print("This is the gotten token: $accessToken");
     final headers = {
       "Content-type": "application/json; charset=utf-8",
       "Accept": "/",

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gofarmng/Provider/AuthProvider/dbProvider.dart';
+import 'package:gofarmng/Provider/AuthProvider/logoutProvider.dart';
 import 'package:gofarmng/Screens/wallet_screen/wallet_screen.dart';
+import 'package:gofarmng/Utilities/routers.dart';
 import 'package:gofarmng/Widgets/myText.dart';
+import 'package:provider/provider.dart';
 
 import '../../../Constants/size_config.dart';
+import '../../Seller Home Screen/seller_home_screen.dart';
 import 'my_address.dart';
 import 'order_history.dart';
 
@@ -21,7 +26,10 @@ class AppDrawer extends StatelessWidget {
       {
         "icon": "assets/icons/Myprofile.svg",
         "title": "Sell",
-        "onTap": () {},
+        "onTap": () {
+          PageNavigator(ctx: context)
+              .nextPageOnly(page: const SellerHomeScreen());
+        },
       },
       {
         "icon": "assets/icons/history.svg",
@@ -76,7 +84,9 @@ class AppDrawer extends StatelessWidget {
       {
         "icon": "assets/icons/logout.svg",
         "title": "Logout",
-        "onTap": () {},
+        "onTap": () {
+          context.read<DatabaseProvider>().logOut(context);
+        },
       },
     ];
   }

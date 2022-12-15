@@ -21,7 +21,7 @@ class LogoutProvider extends ChangeNotifier {
   String get resMessage => _resMessage;
 
   // A null function to send user email for reset password
-  void logOut({BuildContext? context}) async {
+  void logOut({required BuildContext context}) async {
     _isLoading = false;
     notifyListeners();
 
@@ -43,13 +43,12 @@ class LogoutProvider extends ChangeNotifier {
         final response = json.decode(request.body);
         print(response);
         _isLoading = false;
+        _resMessage = response['message'];
         notifyListeners();
 
         PageNavigator(ctx: context).nextPageOnly(page: const LoginPage());
       } else {
-        final response = json.decode(request.body);
-        _resMessage = response['message'];
-        print(response);
+        _resMessage = "Couldn't log out";
         _isLoading = false;
         notifyListeners();
       }
@@ -61,7 +60,7 @@ class LogoutProvider extends ChangeNotifier {
       _isLoading = false;
       _resMessage = 'Please try again';
       notifyListeners();
-      print(":::(e)");
+      // print('errorMessage: ${e.toString()}');
     }
   }
 }

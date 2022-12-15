@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:gofarmng/Constants/google_sign_in.dart';
 import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Provider/AuthProvider/authProvider.dart';
-import 'package:gofarmng/Provider/AuthProvider/dbProvider.dart';
 import 'package:gofarmng/Screens/Authentication/forgotPassword.dart';
-import 'package:gofarmng/Screens/home_screen/app_drawer/app_drawer.dart';
 import 'package:gofarmng/Utilities/snack_messages.dart';
 import 'package:gofarmng/Widgets/textField.dart';
 import 'package:provider/provider.dart';
@@ -14,9 +11,6 @@ import '../../Styles/colors.dart';
 import '../../Utilities/routers.dart';
 import '../../Widgets/button.dart';
 import '../../Widgets/myText.dart';
-import '../../testGoogle.dart';
-import '../home_screen/home_screen.dart';
-import '../home_screen/home_screen_body.dart';
 import 'signUpPage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -159,22 +153,11 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 const SizedBox(height: 24),
-                Consumer<AuthenticationProvider>(
-                    builder: (context, auth, snapshot) {
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    if (auth.resMessage != "") {
-                      showMessage(message: auth.resMessage, context: context);
-
-                      //clear the response message to avoide duplicate
-                      auth.clear();
-                    }
-                  });
-                  return googleButton(
-                    tap: (() {
-                      // auth.signIn(context);
-                    }),
-                  );
-                }),
+                googleButton(
+                  tap: (() {
+                    // auth.signIn(context);
+                  }),
+                ),
                 const SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

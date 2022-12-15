@@ -2,20 +2,15 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:gofarmng/Constants/url.dart';
 import 'package:gofarmng/Provider/AuthProvider/dbProvider.dart';
 import 'package:gofarmng/Screens/Authentication/verification.dart';
+import 'package:gofarmng/Screens/buyer_home_screen/home_screen.dart';
 import 'package:gofarmng/Utilities/routers.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:http/http.dart' as http;
 
-import '../../Constants/google_sign_in.dart';
 import '../../Screens/Authentication/loginPage.dart';
-import '../../Screens/Authentication/newPassword.dart';
-import '../../Screens/home_screen/home_screen.dart';
-import '../../models/products.dart';
 
 class AuthenticationProvider extends ChangeNotifier {
   //Base Url
@@ -209,28 +204,3 @@ class AuthenticationProvider extends ChangeNotifier {
     }
   }
 }
-  
-  // Future user() async {
-  //   await GoogleSignInApi.login();
-  // }
-
-  // // Future function for Google signin
-  // Future<dynamic> signIn(BuildContext context) async {
-  //   // final user = await GoogleSignInApi.login();
-  //   if (user == null) {
-  //     // ignore: use_build_context_synchronously
-  //     ScaffoldMessenger.of(context)
-  //         .showSnackBar(const SnackBar(content: Text('Sign in Failed')));
-  //   } else {
-  //     PageNavigator(ctx: context).nextPage(page: const HomeScreen());
-  //   }
-  // }
-
-  // Empty function to Reset the User Password
-  // void resetPassword(BuildContext context, {required String email}) async {
-  //   if (email.isEmpty) {
-  //     _resMessage = 'Please enter email address and click on "Reset Password"';
-  //   } else {
-  //     _resMessage = 'Reset intructions sent to $email';
-  //   }
-  // }

@@ -27,9 +27,9 @@ Widget customTextField(
         height: getProportionateScreenHeight(54),
         // margin:
         //     EdgeInsets.symmetric(vertical: getProportionateScreenHeight(10)),
-        padding: EdgeInsets.symmetric(
-            // vertical: getProportionateScreenHeight(5),
-            horizontal: getProportionateScreenWidth(10)),
+        // padding: EdgeInsets.symmetric(
+        //     vertical: getProportionateScreenHeight(5),
+        //     horizontal: getProportionateScreenWidth(10)),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8), color: lightGrey),
         child: TextFormField(

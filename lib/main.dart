@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:gofarmng/Provider/AuthProvider/dbProvider.dart';
 import 'package:gofarmng/Provider/AuthProvider/logoutProvider.dart';
-import 'package:gofarmng/Screens/Authentication/loginPage.dart';
-import 'package:gofarmng/Screens/home_screen/home_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'Provider/AuthProvider/authProvider.dart';
-<<<<<<< HEAD
-=======
-import 'Screens/splashScreen.dart';
->>>>>>> 529325b0abc3888377913cb3fef5eb6c2874189b
+import 'Screens/buyer_home_screen/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +19,8 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthenticationProvider()),
-        ChangeNotifierProvider(create: (_) => LogoutProvider())
+        ChangeNotifierProvider(create: (_) => LogoutProvider()),
+        ChangeNotifierProvider(create: (_) => DatabaseProvider())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
