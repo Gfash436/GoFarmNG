@@ -53,14 +53,14 @@ android {
         versionName flutterVersionName
     }
 
-    signingConfigs {
-        debug {
-            keyAlias 'myandroidkey'
-            keyPassword 'android'
-            storeFile file('farmkey.jks')
-            storePassword 'android'
-        }
-    }
+    // signingConfigs {
+    //     debug {
+    //         keyAlias 'myandroidkey'
+    //         keyPassword 'android'
+    //         storeFile file('farmkey.jks')
+    //         storePassword 'android'
+    //     }
+    // }
 
     buildTypes {
         debug {
