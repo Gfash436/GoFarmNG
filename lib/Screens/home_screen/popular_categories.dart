@@ -105,7 +105,7 @@ class PopularCategories extends StatelessWidget {
                                         text: "${product.category}",
                                         color: const Color(0xff353535),
                                         fontSize:
-                                            getProportionateScreenWidth(12),
+                                            getProportionateScreenHeight(12),
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ],
