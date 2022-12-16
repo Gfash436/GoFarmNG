@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import 'Provider/AuthProvider/authProvider.dart';
 import 'Screens/buyer_home_screen/home_screen.dart';
+import 'Screens/splashScreen.dart';
 
 void main() {
   runApp(const MyApp());
