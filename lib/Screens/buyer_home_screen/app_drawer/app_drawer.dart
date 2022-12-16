@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gofarmng/Provider/AuthProvider/dbProvider.dart';
 import 'package:gofarmng/Provider/AuthProvider/logoutProvider.dart';
+import 'package:gofarmng/Screens/Seller%20Home%20Screen/seller_home_screen.dart';
 import 'package:gofarmng/Screens/wallet_screen/wallet_screen.dart';
 import 'package:gofarmng/Utilities/routers.dart';
 import 'package:gofarmng/Widgets/myText.dart';
