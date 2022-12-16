@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gofarmng/Provider/AuthProvider/dbProvider.dart';
+import 'package:gofarmng/Provider/AuthProvider/logoutProvider.dart';
+import 'package:gofarmng/Screens/analytics_screen/analytics_screen.dart';
+import 'package:gofarmng/Screens/buyer_home_screen/home_screen.dart';
 import 'package:gofarmng/Screens/wallet_screen/wallet_screen.dart';
+import 'package:gofarmng/Utilities/routers.dart';
 import 'package:gofarmng/Widgets/myText.dart';
+import 'package:provider/provider.dart';
 
 import '../../../Constants/size_config.dart';
-import '../../cart_screen/payment_details.dart';
 import 'my_address.dart';
 import 'order_history.dart';
 
-class AppDrawer extends StatelessWidget {
-  AppDrawer({
+class SellerAppDrawer extends StatelessWidget {
+  const SellerAppDrawer({
     super.key,
   });
   List<Map<String, dynamic>> drawerList(BuildContext context) {
@@ -21,49 +26,30 @@ class AppDrawer extends StatelessWidget {
       },
       {
         "icon": "assets/icons/Myprofile.svg",
-        "title": "Sell",
+        "title": "Switch to Buyer",
+        "onTap": () {
+          PageNavigator(ctx: context).nextPageOnly(page: const HomeScreen());
+        },
+      },
+      {
+        "icon": "assets/icons/payment.svg",
+        "title": "Upload Products",
         "onTap": () {},
       },
       {
         "icon": "assets/icons/history.svg",
         "title": "Order History",
         "onTap": () {
-          Navigator.of(context).pop();
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const OrderHistory(),
-            ),
-          );
+          PageNavigator(ctx: context).nextPageOnly(page: const OrderHistory());
         },
       },
       {
-        "icon": "assets/icons/payment.svg",
-        "title": "Payment",
+        "icon": "assets/icons/analytics.svg",
+        "title": "Analytics",
         "onTap": () {
-          Navigator.of(context).pop();
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const PaymentDetails(),
-            ),
-          );
+          PageNavigator(ctx: context)
+              .nextPageOnly(page: const AnalyticsScreen());
         },
-      },
-      {
-        "icon": "assets/icons/location.svg",
-        "title": "My Address",
-        "onTap": () {
-          Navigator.of(context).pop();
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const MyAddress(),
-            ),
-          );
-        },
-      },
-      {
-        "icon": "assets/icons/track_order.svg",
-        "title": "Track Order",
-        "onTap": () {},
       },
       {
         "icon": "assets/icons/settings.svg",
@@ -84,7 +70,9 @@ class AppDrawer extends StatelessWidget {
       {
         "icon": "assets/icons/logout.svg",
         "title": "Logout",
-        "onTap": () {},
+        "onTap": () {
+          context.read<DatabaseProvider>().logOut(context);
+        },
       },
     ];
   }

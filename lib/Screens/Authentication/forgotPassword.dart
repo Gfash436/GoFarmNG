@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../Provider/AuthProvider/authProvider.dart';
 import '../../Styles/colors.dart';
 import '../../Widgets/button.dart';
 import '../../Widgets/myText.dart';
@@ -50,7 +52,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                             children: [
                               myText(
                                   text:
-                                      'A password reset link would be sent to your email.',
+                                      'A password reset link will be sent to your email.',
                                   color: grey,
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500),
@@ -61,11 +63,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               context: context,
                               text: 'Continue',
                               tap: (() {
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                        builder: (context) =>
-                                            const NewPassword()));
+                                context
+                                    .read<AuthenticationProvider>()
+                                    .resetPassword(
+                                        context: context,
+                                        email: _emailController.text.trim());
+                                // Navigator.push(
+                                //     context,
+                                //     CupertinoPageRoute(
+                                //         builder: (context) =>
+                                //             const NewPassword()));
                               })),
                           const SizedBox(height: 16),
                           GestureDetector(
@@ -73,7 +80,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                               Navigator.pop(
                                   context,
                                   CupertinoPageRoute(
-                                      builder: (context) => SignUpPage()));
+                                      builder: (context) =>
+                                          const SignUpPage()));
                             },
                             child: myText(
                                 text: 'Back to Sign In',

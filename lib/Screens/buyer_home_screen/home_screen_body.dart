@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gofarmng/Provider/AuthProvider/authProvider.dart';
-import 'package:gofarmng/Screens/home_screen/app_bar.dart';
-import 'package:gofarmng/Screens/home_screen/app_drawer/app_drawer.dart';
 import 'package:provider/provider.dart';
 
 import '../../Constants/size_config.dart';

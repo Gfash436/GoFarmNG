@@ -1,3 +1,3 @@
 class ApiUrl {
-  static String baseUrl = 'https://gofarmng.herokuapp.com';
+  static String baseUrl = 'https://gofarm-ng.vercel.app';
 }

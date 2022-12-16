@@ -5,12 +5,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:gofarmng/Constants/url.dart';
 import 'package:gofarmng/Provider/AuthProvider/dbProvider.dart';
 import 'package:gofarmng/Screens/Authentication/verification.dart';
+import 'package:gofarmng/Screens/buyer_home_screen/home_screen.dart';
 import 'package:gofarmng/Utilities/routers.dart';
 
 import 'package:http/http.dart' as http;
 
-import '../../Screens/home_screen/home_screen.dart';
-import '../../models/products.dart';
+import '../../Screens/Authentication/loginPage.dart';
 
 class AuthenticationProvider extends ChangeNotifier {
   //Base Url
@@ -131,7 +131,7 @@ class AuthenticationProvider extends ChangeNotifier {
         //Save user data and then navigate to homepage
         final authToken = response['access_token'];
         DatabaseProvider().saveToken(authToken);
-        PageNavigator(ctx: context).nextPageOnly(page: HomeScreen());
+        PageNavigator(ctx: context).nextPageOnly(page: const HomeScreen());
       } else {
         final response = json.decode(request.body);
         _resMessage = response['message'];
@@ -156,12 +156,51 @@ class AuthenticationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  
+  // A null function to send user email for reset password
+  void resetPassword(
+      {required String email, required BuildContext context}) async {
+    _isLoading = false;
+    notifyListeners();
+
+    //Initialize Url
+    String url = "$requestBaseUrl/api/forgotpassword";
+
+    //Create the payload(body) that the API needs
+    final body = {"email": email};
+    print(body);
+
+    Map<String, String> requestHeaders = {
+      "Content-type": "application/json",
+      "Accept": "/",
+    };
+
+    //Rap request in try&catch because errors from the internet
+    try {
+      http.Response request = await http.post(Uri.parse(url),
+          body: jsonEncode(body), headers: requestHeaders);
+      if (request.statusCode == 201) {
+        final response = json.decode(request.body);
+        print(response);
+        _isLoading = false;
+        notifyListeners();
+
+        PageNavigator(ctx: context).nextPageOnly(page: const LoginPage());
+      } else {
+        final response = json.decode(request.body);
+        _resMessage = response['message'];
+        print(response);
+        _isLoading = false;
+        notifyListeners();
+      }
+    } on SocketException catch (_) {
+      _isLoading = false;
+      _resMessage = 'Internet connection is not available !';
+      notifyListeners();
+    } catch (e) {
+      _isLoading = false;
+      _resMessage = 'Please try again';
+      notifyListeners();
+      print(":::(e)");
+    }
+  }
 }
-
-// Map<String, dynamic> values = snapshot.data.value;
-// values.forEach((key,values){
-//   list.add(values);
-// });
-// list = snapshot.data.value.map((value)=> value as Map<String,dynamic).toList();
-

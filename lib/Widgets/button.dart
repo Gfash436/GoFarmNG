@@ -76,7 +76,7 @@ Widget googleButton(
           color: status == false ? white : green,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(color: grey)),
-      width: MediaQuery.of(context!).size.width,
+      width: getProportionateScreenWidth(250),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -93,7 +93,7 @@ Widget googleButton(
   );
 }
 
-Column drawerButton(
+Widget drawerButton(
     BuildContext context, String title, String icon, VoidCallback tap) {
   return Column(
     children: [

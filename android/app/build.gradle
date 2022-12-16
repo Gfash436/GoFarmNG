@@ -53,8 +53,7 @@ android {
         versionName flutterVersionName
     }
 
-
-    
+   
 
     buildTypes {
         release {

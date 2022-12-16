@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:gofarmng/Constants/size_config.dart';
-import 'package:gofarmng/Screens/home_screen/app_bar.dart';
-import 'package:gofarmng/Screens/home_screen/app_drawer/app_drawer.dart';
 
 import '../../Styles/colors.dart';
 import '../home_screen/app_drawer/order_history.dart';
@@ -11,7 +9,7 @@ import 'pie_chart/pie_chart.dart';
 import 'recent_orders/recent_orders.dart';
 
 class AnalyticsScreen extends StatelessWidget {
-  AnalyticsScreen({super.key});
+  const AnalyticsScreen({super.key});
   // final scafoldKey = GlobalKey<ScaffoldState>();
 
   @override

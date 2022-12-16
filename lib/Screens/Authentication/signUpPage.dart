@@ -4,7 +4,6 @@ import 'package:gofarmng/Constants/size_config.dart';
 import 'package:gofarmng/Screens/Authentication/loginPage.dart';
 import 'package:gofarmng/Widgets/textField.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 
 import '../../../Provider/AuthProvider/authProvider.dart';
@@ -12,11 +11,6 @@ import '../../../Styles/colors.dart';
 import '../../../Utilities/snack_messages.dart';
 import '../../../Widgets/button.dart';
 import '../../../Widgets/myText.dart';
-import '../../Constants/google_sign_in.dart';
-import '../../Utilities/routers.dart';
-import '../home_screen/home_screen.dart';
-
-GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['profile', 'email']);
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -57,244 +51,228 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return SafeArea(
-        child: Scaffold(
-            backgroundColor: white,
-            body: SingleChildScrollView(
-              child: Center(
-                  child: Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
-                      child: Column(children: [
-                        myText(
-                            text: 'Create an Account',
-                            color: textColor,
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700),
-                        const SizedBox(height: 32),
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: getProportionateScreenWidth(160),
-                              child: customTextField(
-                                  title: 'First name',
-                                  hint: 'Enter first name',
-                                  controller: _firstNameController,
-                                  keyboardType: TextInputType.name),
-                            ),
-                            const SizedBox(width: 12),
-                            SizedBox(
-                              width: getProportionateScreenWidth(160),
-                              child: customTextField(
-                                  title: 'Last name',
-                                  hint: 'Enter last name',
-                                  controller: _lastNameController,
-                                  keyboardType: TextInputType.name),
-                            ),
-                          ],
+      child: Scaffold(
+        backgroundColor: white,
+        body: SingleChildScrollView(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
+              child: Column(children: [
+                myText(
+                    text: 'Create an Account',
+                    color: textColor,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w700),
+                const SizedBox(height: 32),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: getProportionateScreenWidth(160),
+                      child: customTextField(
+                          title: 'First name',
+                          hint: 'Enter first name',
+                          controller: _firstNameController,
+                          keyboardType: TextInputType.name),
+                    ),
+                    const SizedBox(width: 12),
+                    SizedBox(
+                      width: getProportionateScreenWidth(160),
+                      child: customTextField(
+                          title: 'Last name',
+                          hint: 'Enter last name',
+                          controller: _lastNameController,
+                          keyboardType: TextInputType.name),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                customTextField(
+                    title: 'Email',
+                    hint: 'example@gmail.com',
+                    controller: _emailController,
+                    keyboardType: TextInputType.emailAddress),
+                const SizedBox(height: 8),
+                customTextField(
+                    title: 'Phone Number',
+                    hint: 'Enter phone number',
+                    controller: _phoneController,
+                    keyboardType: TextInputType.phone),
+                const SizedBox(height: 8),
+                Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Role',
+                        style: TextStyle(
+                          fontFamily: 'Nunito',
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: textColor,
                         ),
-                        const SizedBox(height: 8),
-                        customTextField(
-                            title: 'Email',
-                            hint: 'example@gmail.com',
-                            controller: _emailController,
-                            keyboardType: TextInputType.emailAddress),
-                        const SizedBox(height: 8),
-                        customTextField(
-                            title: 'Phone Number',
-                            hint: 'Enter phone number',
-                            controller: _phoneController,
-                            keyboardType: TextInputType.phone),
-                        const SizedBox(height: 8),
-                        Column(
-                          children: [
-                            Container(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                'Role',
-                                style: TextStyle(
-                                  fontFamily: 'Nunito',
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w500,
-                                  color: textColor,
-                                ),
-                              ),
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Container(
+                      height: getProportionateScreenHeight(54),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: getProportionateScreenWidth(10)),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          color: lightGrey),
+                      child: DropdownButtonHideUnderline(
+                        child: DropdownButton2(
+                          hint: Text(
+                            'Select role',
+                            style: TextStyle(
+                              color: grey,
                             ),
-                            const SizedBox(height: 8),
-                            Container(
-                              height: getProportionateScreenHeight(54),
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: getProportionateScreenWidth(10)),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: lightGrey),
-                              child: DropdownButtonHideUnderline(
-                                child: DropdownButton2(
-                                  hint: Text(
-                                    'Select role',
-                                    style: TextStyle(
-                                      color: grey,
+                          ),
+                          icon: const Icon(Icons.keyboard_arrow_down),
+                          iconSize: 30,
+                          iconDisabledColor: grey,
+                          items: roles
+                              .map((role) => DropdownMenuItem<String>(
+                                    value: role,
+                                    child: Text(
+                                      role,
+                                      style: const TextStyle(
+                                        fontSize: 14,
+                                      ),
                                     ),
-                                  ),
-                                  icon: const Icon(Icons.keyboard_arrow_down),
-                                  iconSize: 30,
-                                  iconDisabledColor: grey,
-                                  items: roles
-                                      .map((role) => DropdownMenuItem<String>(
-                                            value: role,
-                                            child: Text(
-                                              role,
-                                              style: const TextStyle(
-                                                fontSize: 14,
-                                              ),
-                                            ),
-                                          ))
-                                      .toList(),
-                                  value: selectedValue,
-                                  onChanged: (value) {
-                                    _roleController.text = value!;
-                                    setState(() {
-                                      selectedValue = value as String;
-                                    });
-                                  },
-                                  buttonPadding:
-                                      const EdgeInsetsDirectional.only(end: 8),
-                                  buttonHeight: 40,
-                                  buttonWidth:
-                                      MediaQuery.of(context).size.width,
-                                  itemHeight: 40,
-                                ),
-                              ),
-                            ),
-                          ],
+                                  ))
+                              .toList(),
+                          value: selectedValue,
+                          onChanged: (value) {
+                            _roleController.text = value!;
+                            setState(() {
+                              selectedValue = value as String;
+                            });
+                          },
+                          buttonPadding:
+                              const EdgeInsetsDirectional.only(end: 8),
+                          buttonHeight: 40,
+                          buttonWidth: MediaQuery.of(context).size.width,
+                          itemHeight: 40,
                         ),
-                        const SizedBox(height: 8),
-                        passwordTextField(
-                            title: 'Password',
-                            hint: 'enter password',
-                            controller: _passwordController),
-                        const SizedBox(height: 8),
-                        passwordTextField(
-                            title: 'Confirm Password',
-                            hint: 'enter password',
-                            controller: _confirmPasswordController),
-                        Row(children: [
-                          Checkbox(
-                            value: _checked,
-                            onChanged: (
-                              bool? value,
-                            ) {
-                              setState(() {
-                                _checked = !_checked;
-                              });
-                            },
-                          ),
-                          Expanded(
-                            child: myText(
-                                text:
-                                    'I agree to GoFarmNG terms of service and private\n policy',
-                                color: grey,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500),
-                          )
-                        ]),
-                        const SizedBox(height: 8),
-                        Consumer<AuthenticationProvider>(
-                            builder: (context, auth, snapshot) {
-                          WidgetsBinding.instance.addPostFrameCallback((_) {
-                            if (auth.resMessage != "") {
-                              showMessage(
-                                  message: auth.resMessage, context: context);
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                passwordTextField(
+                    title: 'Password',
+                    hint: 'enter password',
+                    controller: _passwordController),
+                const SizedBox(height: 8),
+                passwordTextField(
+                    title: 'Confirm Password',
+                    hint: 'enter password',
+                    controller: _confirmPasswordController),
+                Row(children: [
+                  Checkbox(
+                    value: _checked,
+                    onChanged: (
+                      bool? value,
+                    ) {
+                      setState(() {
+                        _checked = !_checked;
+                      });
+                    },
+                  ),
+                  Expanded(
+                    child: myText(
+                        text:
+                            'I agree to GoFarmNG terms of service and private\n policy',
+                        color: grey,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500),
+                  )
+                ]),
+                const SizedBox(height: 8),
+                Consumer<AuthenticationProvider>(
+                    builder: (context, auth, snapshot) {
+                  WidgetsBinding.instance.addPostFrameCallback((_) {
+                    if (auth.resMessage != "") {
+                      showMessage(message: auth.resMessage, context: context);
 
-                              //clear the response message to avoide duplicate
-                              auth.clear();
-                            }
-                          });
-                          return customButton(
-                              context: context,
-                              text: 'Sign Up',
-                              tap: (() {
-                                auth.signupUser(
-                                    firstName: _firstNameController.text.trim(),
-                                    lastName: _lastNameController.text.trim(),
-                                    email: _emailController.text.trim(),
-                                    phoneNumber: _phoneController.text.trim(),
-                                    role: _roleController.text,
-                                    password: _passwordController.text,
-                                    confirmPassword:
-                                        _confirmPasswordController.text,
-                                    context: context);
-                              }));
-                        }),
-                        const SizedBox(height: 8),
-                        SizedBox(
-                          width: getProportionateScreenWidth(300),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                  child: Divider(
-                                thickness: 1,
-                                color: grey,
-                              )),
-                              myText(
-                                  text: ' or ',
-                                  color: textColor,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500),
-                              Expanded(
-                                child: Divider(
-                                  color: grey,
-                                  thickness: 1,
-                                ),
-                              )
-                            ],
-                          ),
+                      //clear the response message to avoide duplicate
+                      auth.clear();
+                    }
+                  });
+                  return customButton(
+                      context: context,
+                      text: 'Sign Up',
+                      tap: (() {
+                        auth.signupUser(
+                            firstName: _firstNameController.text.trim(),
+                            lastName: _lastNameController.text.trim(),
+                            email: _emailController.text.trim(),
+                            phoneNumber: _phoneController.text.trim(),
+                            role: _roleController.text,
+                            password: _passwordController.text,
+                            confirmPassword: _confirmPasswordController.text,
+                            context: context);
+                      }));
+                }),
+                const SizedBox(height: 8),
+                SizedBox(
+                  width: getProportionateScreenWidth(300),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                          child: Divider(
+                        thickness: 1,
+                        color: grey,
+                      )),
+                      myText(
+                          text: ' or ',
+                          color: textColor,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500),
+                      Expanded(
+                        child: Divider(
+                          color: grey,
+                          thickness: 1,
                         ),
-                        const SizedBox(height: 16),
-                        googleButton(tap: signUp, context: context),
-                        const SizedBox(height: 8),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const myText(
-                                text: "Already have an account? ",
-                                fontSize: 13,
-                                fontWeight: FontWeight.w400),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pushReplacement(
-                                    context,
-                                    CupertinoPageRoute(
-                                        builder: (context) => LoginPage()));
-                              },
-                              child: myText(
-                                  text: 'Sign In.',
-                                  color: green,
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w400),
-                            )
-                          ],
-                        )
-                      ]))),
-            )));
-  }
-
-  // Future function for Google signin
-  Future signUp() async {
-    final user = await GoogleSignInApi.login();
-
-    if (user == null) {
-      // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('Sign in Failed')));
-    } else {
-      PageNavigator(ctx: context).nextPage(page: HomeScreen());
-    }
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 16),
+                googleButton(
+                    // tap: signUp, context: context,
+                    ),
+                const SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const myText(
+                        text: "Already have an account? ",
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushReplacement(
+                            context,
+                            CupertinoPageRoute(
+                                builder: (context) => const LoginPage()));
+                      },
+                      child: myText(
+                          text: 'Sign In.',
+                          color: green,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w400),
+                    )
+                  ],
+                ),
+              ]),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
-
-// To logOut user
-// tap: _handleSignOut  then,
-// Future<void> _handleSignOut() async {
-// _googleSignIn.disconnect();
-// }
