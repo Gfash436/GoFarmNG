@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gofarmng/Provider/AuthProvider/dbProvider.dart';
 import 'package:gofarmng/Provider/AuthProvider/logoutProvider.dart';
+import 'package:gofarmng/Screens/splashScreen.dart';
 import 'package:provider/provider.dart';
 
 import 'Provider/AuthProvider/authProvider.dart';
-import 'Screens/buyer_home_screen/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
