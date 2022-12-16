@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Nunito',
           primarySwatch: Colors.blue,
         ),
-        home: const HomeScreen(),
+        home: const SplashScreen(),
       ),
     );
   }
